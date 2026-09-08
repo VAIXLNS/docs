@@ -1000,7 +1000,54 @@ Security checklist:
 ## Development environment
 
 <Tip>
-    **Using an AI coding agent?** Install [LangChain Skills](https://github.com/langchain-ai/langchain-skills) to improve your agent's performance on LangChain ecosystem tasks, then click the "Copy page" button on the top right of this page and paste the raw content into your agent to have it set up your environment automatically.
+    **Using an AI coding agent?**
+
+    - Install the [LangChain Docs MCP servers](/use-these-docs) to give your agent access to up-to-date LangChain documentation and examples.
+
+      <Prompt
+    description="Connect LangChain docs MCP servers"
+    icon="plug"
+    actions={["copy", "cursor"]}
+>
+Connect both LangChain documentation MCP servers to my coding agent so it can look up current LangChain, LangGraph, and LangSmith docs and API reference.
+
+Servers to add:
+
+- `docs-langchain`: https://docs.langchain.com/mcp
+- `reference-langchain`: https://reference.langchain.com/mcp
+
+Detect which agent or editor I am using (Claude Code, Cursor, Codex CLI, Claude Desktop, Deep Agents Code, VS Code, Antigravity, or another MCP-compatible client). Use the matching setup from https://docs.langchain.com/use-these-docs.md:
+
+- Claude Code: `claude mcp add --transport http` for each server (project scope by default; use `--scope user` only if I ask for global access).
+- Codex CLI: `codex mcp add` with each server URL.
+- Cursor, Deep Agents Code, VS Code, or Antigravity: merge both entries into the MCP settings JSON using the field names shown on that page for my client.
+- Claude Desktop: add both URLs under Settings > Connectors.
+
+Do not invent alternate MCP URLs. After configuring, confirm both servers are listed and reachable.
+</Prompt>
+    - Install [LangChain Skills](https://github.com/langchain-ai/langchain-skills) to improve your agent's performance on LangChain ecosystem tasks, then click the **Copy page** button on the top right of this page and paste the raw content into your agent to have it set up your environment automatically.
+
+      <Prompt
+    description="Install LangChain Skills"
+    icon="puzzle"
+    actions={["copy", "cursor"]}
+>
+Install LangChain Skills for my coding agent so it can perform better on LangChain, LangGraph, and Deep Agents tasks.
+
+Use the Agent Skills installer from https://github.com/langchain-ai/langchain-skills:
+
+```bash
+npx skills add langchain-ai/langchain-skills --skill '*' --yes
+```
+
+If I ask for a global install instead, use:
+
+```bash
+npx skills add langchain-ai/langchain-skills --skill '*' --yes --global
+```
+
+Detect which agent or editor I am using. If I use Claude Code and prefer the plugin path, follow the marketplace install from that repository README (`/plugin marketplace add` then `/plugin install`). Do not invent alternate skill package names or install URLs. After installing, confirm the skills are available to the agent.
+</Prompt>
 </Tip>
 
 
@@ -1031,16 +1078,16 @@ Once you've reviewed the [contribution guidelines](#contribution-guidelines), fi
         <AccordionGroup>
             <Accordion title="Core packages" defaultOpen>
 
-                - **[`langchain`](https://github.com/langchain-ai/langchainjs/tree/main/langchain#readme)** (located in `libs/langchain/`): Main package with chains, agents, and retrieval logic
-                - **[`@langchain/core`](https://github.com/langchain-ai/langchainjs/tree/main/langchain-core#readme)** (located in `libs/langchain-core/`): Base interfaces and core abstractions
+                - **[`langchain`](https://github.com/langchain-ai/langchainjs/tree/main/libs/langchain#readme)** (located in `libs/langchain/`): Main package with chains, agents, and retrieval logic
+                - **[`@langchain/core`](https://github.com/langchain-ai/langchainjs/tree/main/libs/langchain-core#readme)** (located in `libs/langchain-core/`): Base interfaces and core abstractions
 
             </Accordion>
 
             <Accordion title="Partner packages">
 
                 Located in `libs/providers/`, these are independently versioned packages for specific integrations. For example:
-                - **[`@langchain/openai`](https://github.com/langchain-ai/langchainjs/tree/main/libs/langchain-openai#readme)**: [OpenAI](/oss/javascript/integrations/providers/openai) integrations
-                - **[`@langchain/anthropic`](https://github.com/langchain-ai/langchainjs/tree/main/libs/langchain-anthropic#readme)**: [Anthropic](/oss/javascript/integrations/providers/anthropic) integrations
+                - **[`@langchain/openai`](https://github.com/langchain-ai/langchainjs/tree/main/libs/providers/langchain-openai#readme)**: [OpenAI](/oss/javascript/integrations/providers/openai) integrations
+                - **[`@langchain/anthropic`](https://github.com/langchain-ai/langchainjs/tree/main/libs/providers/langchain-anthropic#readme)**: [Anthropic](/oss/javascript/integrations/providers/anthropic) integrations
                 - **[`@langchain/google`](https://github.com/langchain-ai/langchainjs/tree/main/libs/providers/langchain-google#readme)**: [Google](/oss/javascript/integrations/providers/google) integrations
 
 
@@ -1049,8 +1096,8 @@ Once you've reviewed the [contribution guidelines](#contribution-guidelines), fi
             <Accordion title="Supporting packages">
 
                 - **[`@langchain/textsplitters`](https://github.com/langchain-ai/langchainjs/tree/main/libs/langchain-textsplitters#readme)**: Text splitting utilities
-                - **[`@langchain/standard-tests`](https://github.com/langchain-ai/langchainjs/tree/main/libs/langchain-standard-tests#readme)**: Standard test suites for integrations
-
+                - **[`@langchain/standard-tests`](https://github.com/langchain-ai/langchainjs/tree/main/internal/standard-tests#readme)**: Standard test suites for integrations
+                - **[`@langchain/community`](https://github.com/langchain-ai/langchainjs-community/tree/main/libs/community)**: Community maintained integrations (separate repo)
 
             </Accordion>
         </AccordionGroup>
@@ -1087,7 +1134,7 @@ Once you've reviewed the [contribution guidelines](#contribution-guidelines), fi
             </Accordion>
 
             <Accordion title="Integration packages">
-                - **[`deepagents-harbor`](https://github.com/langchain-ai/deepagents/tree/main/libs/harbor#readme)** (located in `libs/harbor/`): Harbor integration with LangSmith tracing
+                - **[`deepagents-evals`](https://github.com/langchain-ai/deepagents/tree/main/libs/evals#readme)** (located in `libs/evals/`): Evaluation suite and Harbor integration with LangSmith tracing
                 - **[`deepagents-acp`](https://github.com/langchain-ai/deepagents/tree/main/libs/acp#readme)** (located in `libs/acp/`): Agent Client Protocol integration
             </Accordion>
         </AccordionGroup>
@@ -1408,7 +1455,54 @@ make dev
 This starts a development server with hot reload at `http://localhost:3000`. Edit files in `src/` and see changes immediately.
 
 <Tip>
-    **Using an AI coding agent?** Install [LangChain Skills](https://github.com/langchain-ai/langchain-skills) to improve your agent's performance on LangChain ecosystem tasks, then click the "Copy page" button on the top right of this page and paste the raw content into your agent to have it set up your environment automatically.
+    **Using an AI coding agent?**
+
+    - Install the [LangChain Docs MCP servers](/use-these-docs) to give your agent access to up-to-date LangChain documentation and examples.
+
+      <Prompt
+    description="Connect LangChain docs MCP servers"
+    icon="plug"
+    actions={["copy", "cursor"]}
+>
+Connect both LangChain documentation MCP servers to my coding agent so it can look up current LangChain, LangGraph, and LangSmith docs and API reference.
+
+Servers to add:
+
+- `docs-langchain`: https://docs.langchain.com/mcp
+- `reference-langchain`: https://reference.langchain.com/mcp
+
+Detect which agent or editor I am using (Claude Code, Cursor, Codex CLI, Claude Desktop, Deep Agents Code, VS Code, Antigravity, or another MCP-compatible client). Use the matching setup from https://docs.langchain.com/use-these-docs.md:
+
+- Claude Code: `claude mcp add --transport http` for each server (project scope by default; use `--scope user` only if I ask for global access).
+- Codex CLI: `codex mcp add` with each server URL.
+- Cursor, Deep Agents Code, VS Code, or Antigravity: merge both entries into the MCP settings JSON using the field names shown on that page for my client.
+- Claude Desktop: add both URLs under Settings > Connectors.
+
+Do not invent alternate MCP URLs. After configuring, confirm both servers are listed and reachable.
+</Prompt>
+    - Install [LangChain Skills](https://github.com/langchain-ai/langchain-skills) to improve your agent's performance on LangChain ecosystem tasks, then click the **Copy page** button on the top right of this page and paste the raw content into your agent to have it set up your environment automatically.
+
+      <Prompt
+    description="Install LangChain Skills"
+    icon="puzzle"
+    actions={["copy", "cursor"]}
+>
+Install LangChain Skills for my coding agent so it can perform better on LangChain, LangGraph, and Deep Agents tasks.
+
+Use the Agent Skills installer from https://github.com/langchain-ai/langchain-skills:
+
+```bash
+npx skills add langchain-ai/langchain-skills --skill '*' --yes
+```
+
+If I ask for a global install instead, use:
+
+```bash
+npx skills add langchain-ai/langchain-skills --skill '*' --yes --global
+```
+
+Detect which agent or editor I am using. If I use Claude Code and prefer the plugin path, follow the marketplace install from that repository README (`/plugin marketplace add` then `/plugin install`). Do not invent alternate skill package names or install URLs. After installing, confirm the skills are available to the agent.
+</Prompt>
 </Tip>
 
 <Tip>
@@ -1965,7 +2059,7 @@ While any component can be integrated into LangChain, there are specific types o
         Open a PR in the LangChain [docs repo](https://github.com/langchain-ai/docs) so users can find your package. Hosted guides are limited; most integrations are listed via YAML.
 
         <Accordion title="How listing works" icon="book">
-            **Default (under 50,000 monthly downloads, not featured):** Add a row to [`scripts/data/integration_external_docs.yaml`](https://github.com/langchain-ai/docs/blob/main/scripts/data/integration_external_docs.yaml). The name column links to your `docs_url` (partner docs preferred, then GitHub, then PyPI or npm). Do not add a new MDX page.
+            **Default (under 50,000 monthly downloads, not featured):** File an [Integration listing issue](https://github.com/langchain-ai/docs/issues/new?template=06-integration-submission.yml). After a maintainer applies `integration-run`, automation opens a PR that adds a row to [`scripts/data/integration_external_docs.yaml`](https://github.com/langchain-ai/docs/blob/main/scripts/data/integration_external_docs.yaml). The name column links to your `docs_url` (partner docs preferred, then GitHub, then PyPI or npm). Do not add a new MDX page.
 
             **Hosted guide (50,000+ monthly downloads, or featured by maintainers):** Create a page under `src/oss/python/integrations/<component_type>/` from a template:
 
@@ -2148,7 +2242,11 @@ Publish your package to npm, then follow [Make your integration discoverable](#m
 
 ## Make your integration discoverable
 
-After publishing, open a PR in the [LangChain docs repository](https://github.com/langchain-ai/docs) so your package appears under the [integrations tab](/oss/javascript/integrations/providers/overview). Which PR you open depends on eligibility for a hosted guide.
+After publishing, file an **Integration listing** issue in the [LangChain docs repository](https://github.com/langchain-ai/docs/issues/new?template=06-integration-submission.yml) so your package appears under the [integrations tab](/oss/javascript/integrations/providers/overview).
+
+A maintainer reviews the issue and applies the `integration-run` label. That starts automation, which reads the form fields, applies the eligibility rules below, and opens a pull request that tags a maintainer and you for review. Prefer partner docs URLs in the form.
+
+Do **not** open a manual docs PR for a new listing unless a maintainer asks you to.
 
 ### Eligibility for hosted guides
 
@@ -2157,29 +2255,38 @@ LangChain hosts full integration guides in this docs repo only when **either**:
 - The package has at least **50,000 monthly downloads** on PyPI (or npm for TypeScript), **or**
 - Maintainers mark the integration as **featured**
 
-If you do not meet either criterion, do **not** open a PR that adds a new docs page. Instead, add a YAML listing so the package appears in the component download table with a link to your own docs.
+If you do not meet either criterion, the automation adds an **external listing** (YAML + downloads table + provider card) that links to your own docs. It does **not** add a hosted MDX page.
 
 ### List in the download table (default)
 
-Open a PR that adds an entry to [`scripts/data/integration_external_docs.yaml`](https://github.com/langchain-ai/docs/blob/main/scripts/data/integration_external_docs.yaml).
+<Card
+    title="File an Integration listing issue"
+    icon="ticket"
+    href="https://github.com/langchain-ai/docs/issues/new?template=06-integration-submission.yml"
+    arrow
+>
+    Use the fixed form fields for display name, language, component, package name, docs URL, and a short provider description.
+</Card>
 
-Each entry needs at least:
+The automation fills [`scripts/data/integration_external_docs.yaml`](https://github.com/langchain-ai/docs/blob/main/scripts/data/integration_external_docs.yaml) and related listing surfaces from your issue.
+
+Each listing needs at least:
 
 - **`name`**: LangChain class or display name (for example, `ChatAI21`).
 - **`pypi`** or **`npm`**: Registry package name used for the downloads badge.
 - **`docs_url`**: Link for the name column. Prefer partner docs, then the GitHub repo, then the PyPI or npm page.
 
-Optionally include component-specific fields (for example, chat capability flags such as `stream` and `tool_calling`) so the table columns stay accurate. Follow existing entries in the same language and component section.
+Optionally include component-specific capability flags in the issue form (for example, chat `stream` and `tool_calling`) so the table columns stay accurate.
 
 After merge, the refresh job regenerates the component table snippets so your row appears alongside hosted integrations.
 
 <Info>
-    This PR is for **listing metadata only**. Host your usage docs on your site or GitHub README. Your integration package itself should live in its own repository under your GitHub organization or account, published as a standalone package.
+    This flow is for **listing metadata only**. Host your usage docs on your site or GitHub README. Your integration package itself should live in its own repository under your GitHub organization or account, published as a standalone package.
 </Info>
 
 ### Hosted guide (50K+ or featured)
 
-If your package meets the [eligibility criteria](#eligibility-for-hosted-guides), create a documentation page from one of the following templates and open a PR in the docs repo.
+If your package meets the [eligibility criteria](#eligibility-for-hosted-guides), the Integration listing automation can open a PR with a documentation page from one of the following templates. Maintainers may also ask you to author or revise hosted pages manually.
 
 Depending on the type of integration you have built, you will need to create different types of documentation pages. LangChain provides templates for different types of integrations to help you get started.
 
@@ -2196,19 +2303,19 @@ Depending on the type of integration you have built, you will need to create dif
     To view a given documentation page in raw markdown, use the dropdown button next to "Copy page" on the top right of the page and select "View as Markdown".
 </Tip>
 
-Make a fork of the [LangChain docs repository](https://github.com/langchain-ai/docs) (not the main `langchain` repo) under a personal GitHub account, and clone it locally. Create a new branch for your integration. Copy the template and modify it using your favorite markdown text editor. Make sure to refer to and follow the [documentation guide](/oss/javascript/contributing/documentation) when writing your documentation.
+If you are asked to edit a hosted page manually, fork the [LangChain docs repository](https://github.com/langchain-ai/docs) (not the main `langchain` repo), follow the matching template, and follow the [documentation guide](/oss/javascript/contributing/documentation).
 
 If your package was previously listed in [`integration_external_docs.yaml`](https://github.com/langchain-ai/docs/blob/main/scripts/data/integration_external_docs.yaml), remove that YAML entry in the same PR so the table does not show a duplicate row.
 
 Do not set `featured: true` in frontmatter unless a maintainer asks you to. Featured status is a maintainer decision.
 
 <Info>
-    This PR is for **documentation only**. Your integration package itself should live in its own repository under your GitHub organization or account, published as a standalone package.
+    Hosted-guide PRs are for **documentation only**. Your integration package itself should live in its own repository under your GitHub organization or account, published as a standalone package.
 </Info>
 
 <Warning>
-    We may reject PRs or ask for modification if:
-    - The package does not meet the [hosted-guide eligibility criteria](#eligibility-for-hosted-guides)
+    We may reject listing issues or PRs, or ask for modification, if:
+    - The package does not meet the [hosted-guide eligibility criteria](#eligibility-for-hosted-guides) when a hosted page is requested
     - CI checks fail
     - Severe grammatical errors or typos are present
     - [Mintlify components](/oss/javascript/contributing/documentation#mintlify-components) are used incorrectly
@@ -2218,10 +2325,10 @@ Do not set `featured: true` in frontmatter unless a maintainer asks you to. Feat
     - [Quality standards](/oss/javascript/contributing/documentation#quality-standards) are not met
 </Warning>
 
-Please be patient as we handle a large volume of PRs. We will review your PR as soon as possible and provide feedback or merge it. **Do not repeatedly tag maintainers about your PR.**
+Please be patient as we handle a large volume of submissions. Review the automated PR when it opens. **Do not repeatedly tag maintainers about your issue or PR.**
 
 <Note>
-    If your PR includes AI-generated content, you must follow our [acceptable uses of LLMs](/oss/javascript/contributing/overview#acceptable-uses-of-llms) policy.
+    If a PR includes AI-generated content, you must follow our [acceptable uses of LLMs](/oss/javascript/contributing/overview#acceptable-uses-of-llms) policy.
 </Note>
 
 ## Next steps
@@ -2257,11 +2364,11 @@ First, install the required dependencies:
 
 
 <CardGroup cols={2}>
-    <Card title="langchain-core" icon="cube" href="https://github.com/langchain-ai/langchainjs/tree/main/langchain-core#readme" arrow>
+    <Card title="langchain-core" icon="cube" href="https://github.com/langchain-ai/langchainjs/tree/main/libs/langchain-core#readme" arrow>
         Defines the interfaces we want to import to define our custom components
     </Card>
 
-    <Card title="langchain-tests" icon="flask" href="https://github.com/langchain-ai/langchainjs/tree/main/libs/langchain-standard-tests#readme" arrow>
+    <Card title="langchain-tests" icon="flask" href="https://github.com/langchain-ai/langchainjs/tree/main/internal/standard-tests#readme" arrow>
         Provides the standard tests and plugins necessary to run them
     </Card>
 </CardGroup>
@@ -4188,7 +4295,7 @@ NamespaceFactory = Callable[[Runtime], tuple[str, ...]]
 ```
 
 The `Runtime` provides:
-- `rt.context`—User-supplied context passed via LangGraph's [context schema](https://langchain-ai.github.io/langgraph/concepts/runtime/) (for example, `user_id`)
+- `rt.context`—User-supplied context passed via LangGraph's [context schema](/oss/javascript/langgraph/graph-api#runtime-context) (for example, `user_id`)
 
 - `rt.serverInfo`—Server-specific metadata when running on LangGraph Server (assistant ID, graph ID, authenticated user)
 - `rt.executionInfo`—Execution identity information (thread ID, run ID, checkpoint ID)
@@ -4986,21 +5093,6 @@ Source: https://docs.langchain.com/oss/javascript/deepagents/changelog-py
 </Callout>
 <Callout icon="edit">
     [Edit this page on GitHub](https://github.com/langchain-ai/docs/edit/main/src/oss/deepagents/changelog-py.mdx) or [file an issue](https://github.com/langchain-ai/docs/issues/new/choose).
-</Callout>
-</div>
-
-
-# Deep Agents Code
-Source: https://docs.langchain.com/oss/javascript/deepagents/code-link
-
----
-
-<div className="source-links">
-<Callout icon="terminal-2">
-    [Connect these docs](/use-these-docs) to Claude, VSCode, and more via MCP for real-time answers.
-</Callout>
-<Callout icon="edit">
-    [Edit this page on GitHub](https://github.com/langchain-ai/docs/edit/main/src/oss/deepagents/code-link.mdx) or [file an issue](https://github.com/langchain-ai/docs/issues/new/choose).
 </Callout>
 </div>
 
@@ -7766,7 +7858,7 @@ npm install @langchain/mcp-adapters
     const tools = await client.getTools();
     
     const agent = await createDeepAgent({
-        model: "anthropic:claude-sonnet-4-6",
+        model: "anthropic:claude-sonnet-5",
         tools,
     });
     
@@ -18337,7 +18429,9 @@ const captureScreenshot = tool(
 
 
 
-The return value is converted to a `ToolMessage` the model reads on the next turn. Access the normalized representation with `content_blocks` on the resulting message. For return-type options, serialization behavior, and MCP examples, see [Tool return values](/oss/javascript/langchain/tools#tool-return-values) and [Multimodal tool content](/oss/javascript/langchain/mcp#multimodal-tool-content).
+The return value is converted to a `ToolMessage` the model reads on the next turn. Access the normalized representation with `content_blocks` on the resulting message.
+
+
 
 <Tip>
 When a tool produces images or other large binary data, save the artifact to a [backend](/oss/javascript/deepagents/backends) and return a concise text description plus a path or URL. This keeps message history smaller and works better with [context compression](/oss/javascript/deepagents/context-engineering#context-compression).
@@ -19341,11 +19435,93 @@ Source: https://docs.langchain.com/oss/javascript/deepagents/quickstart
 
 This guide walks you through creating your first deep agent with file system tools and subagent capabilities. You will build a research agent that can conduct research and write reports.
 
+<Prompt
+    description="Build the Deep Agents research quickstart"
+    icon="sparkles"
+    actions={["copy", "cursor"]}
+>
+Build a Deep Agents research agent in this working directory by following the Deep Agents quickstart.
+
+## Step 1: Read the guide
+
+Detect whether this project uses Python or TypeScript/JavaScript. Fetch and follow the matching page; treat it as the source of truth for package names, model strings, search-tool setup, and code:
+
+- Python: https://docs.langchain.com/oss/python/deepagents/quickstart.md
+- TypeScript: https://docs.langchain.com/oss/javascript/deepagents/quickstart.md
+
+## Step 2: Install dependencies
+
+Install `deepagents` (and `langchain` / `@langchain/core` on TypeScript) with the package manager already used in this project. Add Tavily only if the user is not using a Google, OpenAI, or Anthropic built-in provider search tool.
+
+## Step 3: Configure model credentials
+
+Check for a supported provider API key (for example `GOOGLE_API_KEY`, `OPENAI_API_KEY`, or `ANTHROPIC_API_KEY`). If none is set, ask the user which provider to use, then stop and wait while they create a key and set it in the shell or a `.env` file. Do not invent, hardcode, or commit API keys. If they need Tavily, ask them to set `TAVILY_API_KEY` the same way.
+
+## Step 4: Implement the research agent
+
+Follow the quickstart steps in order:
+
+1. Create the internet search tool (prefer the provider built-in search tool when the chosen model supports it; otherwise use Tavily).
+2. Call `create_deep_agent` with the search tool, a `provider:model` string (or initialized model) from the guide, and the research system prompt shown on the page.
+3. Optionally enable LangSmith tracing by asking the user to set `LANGSMITH_TRACING=true` and `LANGSMITH_API_KEY` themselves.
+4. Run the agent on a sample research query from the guide and print the final response.
+
+## Rules
+
+- Stay scoped to this quickstart. Do not add Managed Deep Agents deployment, evals, or unrelated frameworks.
+- Prefer provider built-in web search when available; use Tavily only when needed.
+- Ask rather than guess when a secret, provider choice, or project convention is unclear.
+</Prompt>
+
 <Tip>
     **Using an AI coding assistant?**
 
-    - Install the [LangChain Docs MCP server](/use-these-docs) to give your agent access to up-to-date LangChain documentation and examples.
+    - Install the [LangChain Docs MCP servers](/use-these-docs) to give your agent access to up-to-date LangChain documentation and examples.
+
+      <Prompt
+    description="Connect LangChain docs MCP servers"
+    icon="plug"
+    actions={["copy", "cursor"]}
+>
+Connect both LangChain documentation MCP servers to my coding agent so it can look up current LangChain, LangGraph, and LangSmith docs and API reference.
+
+Servers to add:
+
+- `docs-langchain`: https://docs.langchain.com/mcp
+- `reference-langchain`: https://reference.langchain.com/mcp
+
+Detect which agent or editor I am using (Claude Code, Cursor, Codex CLI, Claude Desktop, Deep Agents Code, VS Code, Antigravity, or another MCP-compatible client). Use the matching setup from https://docs.langchain.com/use-these-docs.md:
+
+- Claude Code: `claude mcp add --transport http` for each server (project scope by default; use `--scope user` only if I ask for global access).
+- Codex CLI: `codex mcp add` with each server URL.
+- Cursor, Deep Agents Code, VS Code, or Antigravity: merge both entries into the MCP settings JSON using the field names shown on that page for my client.
+- Claude Desktop: add both URLs under Settings > Connectors.
+
+Do not invent alternate MCP URLs. After configuring, confirm both servers are listed and reachable.
+</Prompt>
     - Install [LangChain Skills](https://github.com/langchain-ai/langchain-skills) to improve your agent's performance on LangChain ecosystem tasks.
+
+      <Prompt
+    description="Install LangChain Skills"
+    icon="puzzle"
+    actions={["copy", "cursor"]}
+>
+Install LangChain Skills for my coding agent so it can perform better on LangChain, LangGraph, and Deep Agents tasks.
+
+Use the Agent Skills installer from https://github.com/langchain-ai/langchain-skills:
+
+```bash
+npx skills add langchain-ai/langchain-skills --skill '*' --yes
+```
+
+If I ask for a global install instead, use:
+
+```bash
+npx skills add langchain-ai/langchain-skills --skill '*' --yes --global
+```
+
+Detect which agent or editor I am using. If I use Claude Code and prefer the plugin path, follow the marketplace install from that repository README (`/plugin marketplace add` then `/plugin install`). Do not invent alternate skill package names or install URLs. After installing, confirm the skills are available to the agent.
+</Prompt>
 </Tip>
 
 ## Prerequisites
@@ -20260,7 +20436,7 @@ You can choose from many different [embedding integrations](/oss/javascript/inte
     ```
     </Tab>
 
-    <Tab title="VertexAI">
+    <Tab title="Gemini Enterprise Agent Platform">
     <CodeGroup>
     ```bash npm
     npm i @langchain/google-vertexai
@@ -28256,7 +28432,8 @@ Define subagents as dictionaries matching the [`SubAgent`](https://reference.lan
 |-------|------|-------------|
 | `name` | `string` | Required. Unique identifier for the subagent. The main agent uses this name when calling the `task()` tool. The subagent name becomes metadata for `AIMessage`s and for streaming, which helps to differentiate between agents. |
 | `description` | `string` | Required. Description of what this subagent does. Be specific and action-oriented. The main agent uses this to decide when to delegate. |
-| `systemPrompt` | `string` | Required. Instructions for the subagent. Custom subagents must define their own. Include tool usage guidance and output format requirements.<br></br>Does not inherit from main agent. |
+| `systemPrompt` | `string` | Required for `mode: "isolated"` (the default). Instructions for the subagent. Custom isolated subagents must define their own. Include tool usage guidance and output format requirements.<br></br>Does not inherit from main agent. For `mode: "fork"`, omit this field unless you need a fork-only addendum. See [Forked subagents](#forked-subagents). |
+| `mode` | `"isolated"` \| `"fork"` | Optional. Context mode. Defaults to `"isolated"`, where the subagent only sees the delegated task. Set to `"fork"` to inherit the parent's conversation and system prompt instead. See [Forked subagents](#forked-subagents). |
 | `tools` | `StructuredTool[]` | Optional. Tools the subagent can use. Keep this minimal and include only what's needed.<br></br>Inherits from main agent by default. When specified, overrides the inherited tools entirely. |
 | `model` | `LanguageModelLike \| string` | Optional. Overrides the main agent's model. Omit to use the main agent's model.<br></br>Inherits from main agent by default. You can pass either a model identifier string like `'openai:gpt-5.5'` (using the `'provider:model'` format) or a LangChain chat model object (`await initChatModel("gpt-5.5")` or `new ChatOpenAI({ model: "gpt-5.5" })`). |
 | `middleware` | `AgentMiddleware[]` | Optional. Additional middleware for custom behavior, logging, or rate limiting.<br></br>Does not inherit from the main agent. Appended to the [synchronous subagent stack](/oss/javascript/deepagents/customization#synchronous-subagent-stack). |
@@ -28276,6 +28453,7 @@ For complex workflows, use a prebuilt LangGraph graph as a [`CompiledSubAgent`](
 | `name` | `str` | Required. Unique identifier for the subagent. The subagent name becomes metadata for `AIMessage`s and for streaming, which helps to differentiate between agents. |
 | `description` | `str` | Required. What this subagent does. |
 | `runnable` | `Runnable` | Required. A compiled LangGraph graph (must call `.compile()` first). |
+| `mode` | `"isolated"` \| `"fork"` | Optional. Defaults to `"isolated"`. Set to `"fork"` to inherit the parent's message history. The compiled graph keeps its own system prompt either way. See [Forked subagents](#forked-subagents). |
 
 ## Using SubAgent
 
@@ -28988,6 +29166,136 @@ If you're creating a custom LangGraph graph, make sure that the graph has a [sta
     ```
 </CodeGroup>
 
+
+## Forked subagents
+
+By default, a subagent runs with `mode: "isolated"`: it sees only the task description you give it and has no memory of the conversation that led up to the delegation. A **forked subagent** (`mode: "fork"`) inherits the parent's full conversation history and exact system prompt instead.
+
+Use forked subagents when the subagent's task is to continue the work the parent already started, like a worker agent that picks up a fix the parent has already diagnosed, or a subagent that drafts the postmortem for an incident investigation. Since forking is a mode you set on the subagent itself, that's a decision you make when you define it.
+
+```mermaid
+%%{init: {"flowchart": {"subGraphTitleMargin": {"top": 12, "bottom": 4}}}}%%
+graph TD
+    Message["'Review PR #482'"]
+    Analysis["Parent already found:<br/>tokens logged in plaintext,<br/>no expiry check on refresh"]
+    Delegate["Delegate: draft comments<br/>for the issues found"]
+    Message --> Analysis --> Delegate
+
+    subgraph Isolated["`**Isolated subagent**`"]
+        IOut["Sees only the task description<br/>starts from nothing, re-reviews the diff"]
+    end
+
+    subgraph Forked["`**Forked subagent**`"]
+        FOut["Sees parent history + continuation preamble<br/>already knows the issues, writes comments directly"]
+    end
+
+    Delegate -->|task description only| Isolated
+    Delegate -->|parent history + continuation preamble| Forked
+
+    classDef process fill:#E5F4FF,stroke:#006DDD,stroke-width:2px,color:#030710
+    classDef output fill:#F6FFDB,stroke:#6E8900,stroke-width:2px,color:#2E3900
+    class Message,Analysis,Delegate process
+    class IOut,FOut output
+```
+
+
+
+<Note>
+    Subagent forking requires `deepagents>=1.13.3`. It is in [**beta**](/oss/javascript/versioning); APIs and behavior may change between releases.
+</Note>
+
+
+### Configure a forked subagent
+
+
+
+Set `mode: "fork"` on a [`SubAgent`](https://reference.langchain.com/javascript/deepagents/middleware/SubAgent) (the default is `mode: "isolated"`). All [`SubAgent`](https://reference.langchain.com/javascript/deepagents/middleware/SubAgent) fields are available:
+`name`, `description`, `tools`, `model`, `middleware`, `interruptOn`, `permissions`, and `responseFormat`.
+
+`skills` is rejected if provided. `systemPrompt` is allowed and is appended to the parent's inherited prompt as an addendum, but doing so typically breaks the prompt cache, so leave it unset unless you have a specific need for fork-only instructions.
+
+```ts
+import { createDeepAgent } from "deepagents";
+import { tool } from "langchain";
+import { z } from "zod";
+
+const readDiff = tool(
+  async ({ path }: { path: string }) => `diff for ${path}`,
+  {
+    name: "read_diff",
+    description: "Read a file's diff",
+    schema: z.object({ path: z.string() }),
+  },
+);
+
+const commentWriter = {
+  name: "comment-writer",
+  description: "Continues an in-progress PR review and drafts review comments",
+  mode: "fork" as const,
+  tools: [readDiff],
+};
+
+const agent = await createDeepAgent({
+  model: "google-genai:gemini-3.7-flash",
+  tools: [readDiff],
+  subagents: [commentWriter],
+});
+
+const result = await agent.invoke({
+  messages: [
+    {
+      role: "user",
+      content:
+        "Review PR #482 and hand it off to comment-writer to draft comments for the issues found",
+    },
+  ],
+});
+```
+
+
+### How it works
+
+A fork does not get a fresh task description. It gets the parent's own conversation, with one change: the trailing call that delegated to it is dropped and replaced with a short preamble marking the messages above as a continuation, not a fresh request. When the fork finishes, its answer comes back as a normal tool result, and the parent picks up right where it left off.
+
+
+
+```javascript
+// What the parent has, right before delegating
+[
+  new HumanMessage("Review the changes in PR #482"),
+  new AIMessage({ content: "", tool_calls: [{ name: "read_diff", args: { path: "src/auth/session.py" } }] }),
+  new ToolMessage({ content: "- session tokens are logged in plaintext\n- no expiry check on refresh", tool_call_id: "1" }),
+  new AIMessage("Found two issues: session tokens are logged in plaintext, and there's no expiry check on refresh."),
+  new HumanMessage("Good catch. Draft review comments for those."),
+  new AIMessage({ content: "", tool_calls: [{ name: "task", args: { subagentType: "comment-writer", description: "Draft review comments for the two issues found above." } }] }),
+]
+
+// What the fork actually sees
+[
+  new HumanMessage("Review the changes in PR #482"),
+  new AIMessage({ content: "", tool_calls: [{ name: "read_diff", args: { path: "src/auth/session.py" } }] }),
+  new ToolMessage({ content: "- session tokens are logged in plaintext\n- no expiry check on refresh", tool_call_id: "1" }),
+  new AIMessage("Found two issues: session tokens are logged in plaintext, and there's no expiry check on refresh."),
+  new HumanMessage("Good catch. Draft review comments for those."),
+  new HumanMessage("Continuing as the subagent that was just invoked. Draft review comments for the two issues found above."),
+]
+```
+
+
+Reusing the parent's exact prefix also means the fork can reuse the parent's prompt cache instead of starting cold, though tool use that diverges from the parent's will still miss.
+
+A [`CompiledSubAgent`](https://reference.langchain.com/javascript/deepagents/middleware/CompiledSubAgent) supports `mode: "fork"` too, though it keeps its own system prompt since the graph is already built.
+
+### When to use forking
+
+Compare isolated and forked modes along these dimensions:
+
+| Dimension | Isolated (default) | Forked |
+|-----------|---------------------|--------|
+| **Context** | Only the task description you pass in | The parent's full conversation history and system prompt |
+| **System prompt and skills** | You set them on the subagent | Skills not settable; system prompt appends to the parent's (breaks caching, so usually left unset) |
+| **Calling other subagents** | Can use the `task` tool | Cannot use `task`; must finish the work itself |
+| **Best for** | Focused work that needs little prior context | Continuing an investigation the parent has already started |
 
 ## Dynamic subagents
 
@@ -31760,7 +32068,7 @@ npm install @langchain/mcp-adapters
     const tools = await client.getTools();
     
     const agent = await createDeepAgent({
-      model: "anthropic:claude-sonnet-4-6",
+      model: "anthropic:claude-sonnet-5",
       tools,
     });
     
@@ -33367,7 +33675,7 @@ For more on how prompt caching works, see [Anthropic's docs](https://platform.cl
 
 ## Custom clients
 
-Anthropic models [may be hosted on cloud services such as Google Vertex](https://platform.claude.com/docs/en/build-with-claude/claude-on-vertex-ai) that rely on a different underlying client with the same interface as the primary Anthropic client. You can access these services by providing a `createClient` method that returns an initialized instance of an Anthropic client. Here's an example:
+Anthropic models [may be hosted on cloud services such as Gemini Enterprise Agent Platform](https://platform.claude.com/docs/en/build-with-claude/claude-on-vertex-ai) that rely on a different underlying client with the same interface as the primary Anthropic client. You can access these services by providing a `createClient` method that returns an initialized instance of an Anthropic client. Here's an example:
 
 ```typescript
 import { AnthropicVertex } from "@anthropic-ai/vertex-sdk";
@@ -36385,7 +36693,7 @@ This library supports access to a variety of Google's models, including the Gemi
 family of models and their Nano Banana image generation model. You can access these
 models through either Google's [Google AI](https://ai.google.dev/) API (sometimes also
 called the Generative AI API or the AI Studio API) or through the Google Cloud Platform
-[Vertex AI](https://cloud.google.com/vertex-ai) service.
+[Gemini Enterprise Agent Platform](https://cloud.google.com/products/gemini-enterprise-agent-platform) service.
 
 This will help you getting started with `ChatGoogle` [chat models](/oss/javascript/langchain/models).
 For detailed documentation of all `ChatGoogle` features and configurations head to the
@@ -36441,10 +36749,10 @@ const llm = new ChatGoogle({
 });
 ```
 
-### Credentials through Vertex AI Express Mode (API Key)
+### Credentials through Gemini Enterprise Agent Platform Express Mode (API Key)
 
-Vertex AI also supports [Express Mode](https://cloud.google.com/vertex-ai/docs/start/introduction-unified-platform#express-mode),
-which allows you to use an API key for authentication. You can obtain a Vertex AI
+Gemini Enterprise Agent Platform also supports [Express Mode](https://docs.cloud.google.com/gemini-enterprise-agent-platform/machine-learning#express-mode),
+which allows you to use an API key for authentication. You can obtain a Gemini Enterprise Agent Platform
 API key from the [Google Cloud Console](https://console.cloud.google.com/vertex-ai/studio/api-key).
 
 Once you have your API key, you can set it as an environment variable:
@@ -36453,7 +36761,7 @@ Once you have your API key, you can set it as an environment variable:
 export GOOGLE_API_KEY="your-api-key"
 ```
 
-When using [Vertex AI Express Mode](https://docs.cloud.google.com/vertex-ai/generative-ai/docs/start/express-mode/overview), you will also need to specify the platform
+When using [Gemini Enterprise Agent Platform Express Mode](https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/start/express-mode/overview), you will also need to specify the platform
 type as `gcp` when instantiating the model.
 
 ```typescript
@@ -36464,7 +36772,7 @@ const llm = new ChatGoogle({
 });
 ```
 
-### Credentials through Vertex AI (OAuth Application Default Credentials / ADC)
+### Credentials through Gemini Enterprise Agent Platform (OAuth Application Default Credentials / ADC)
 
 For production environments on Google Cloud, it is recommended to use
 [Application Default Credentials (ADC)](https://cloud.google.com/docs/authentication/provide-credentials-adc).
@@ -36484,7 +36792,7 @@ variable to the path of your service account key file:
 export GOOGLE_APPLICATION_CREDENTIALS="/path/to/your/service-account-key.json"
 ```
 
-### Credentials through Vertex AI (OAuth saved credentials)
+### Credentials through Gemini Enterprise Agent Platform (OAuth saved credentials)
 
 If you are running in a web environment or want to provide credentials directly,
 you can use the `GOOGLE_CLOUD_CREDENTIALS` environment variable. This should
@@ -36555,9 +36863,9 @@ import { ChatGoogle } from "@langchain/google";
 ```
 </CodeGroup>
 
-The model will automatically determine whether to use the Google AI API or Vertex AI based on your configuration:
+The model will automatically determine whether to use the Google AI API or Gemini Enterprise Agent Platform based on your configuration:
 - If you provide an `apiKey` (or set `GOOGLE_API_KEY`), it defaults to Google AI.
-- If you provide `credentials` (or set `GOOGLE_APPLICATION_CREDENTIALS` / `GOOGLE_CLOUD_CREDENTIALS` in Node), it defaults to Vertex AI.
+- If you provide `credentials` (or set `GOOGLE_APPLICATION_CREDENTIALS` / `GOOGLE_CLOUD_CREDENTIALS` in Node), it defaults to Gemini Enterprise Agent Platform.
 
 ### Google AI (AI Studio)
 
@@ -36569,7 +36877,7 @@ const llm = new ChatGoogle({
 });
 ```
 
-### Vertex AI
+### Gemini Enterprise Agent Platform
 
 ```typescript
 const llm = new ChatGoogle({
@@ -36578,9 +36886,9 @@ const llm = new ChatGoogle({
 });
 ```
 
-### Vertex AI Express Mode
+### Gemini Enterprise Agent Platform Express Mode
 
-To use Vertex AI with an API key (Express Mode), you must explicitly set the `platformType`.
+To use Gemini Enterprise Agent Platform with an API key (Express Mode), you must explicitly set the `platformType`.
 
 ```typescript
 const llm = new ChatGoogle({
@@ -36814,8 +37122,8 @@ console.log(res.text);
 
 #### Grounding with a data store
 
-If you are using Vertex AI (`platformType: "gcp"`), you can ground responses using
-a Vertex AI Search data store.
+If you are using Gemini Enterprise Agent Platform (`platformType: "gcp"`), you can ground responses using
+an Agent Search data store.
 
 ```typescript
 import { ChatGoogle } from "@langchain/google";
@@ -37182,7 +37490,7 @@ generative models in LangChain through `ChatGoogleGenerativeAI` class in the
 
 
 <Tip>
-You can also access Google's `gemini` family of models via the LangChain VertexAI and VertexAI-web integrations. See the [Vertex AI integration docs](/oss/javascript/integrations/chat/google_vertex_ai).
+You can also access Google's `gemini` family of models via the LangChain `VertexAI` and `VertexAI-web` integrations. See the [Gemini Enterprise Agent Platform docs](/oss/javascript/integrations/chat/google_vertex_ai).
 </Tip>
 
 ### Credentials
@@ -37778,8 +38086,8 @@ For detailed documentation of all `ChatGoogleGenerativeAI` features and configur
 # ChatVertexAI integration
 Source: https://docs.langchain.com/oss/javascript/integrations/chat/google_vertex_ai
 
-[Google Vertex](https://cloud.google.com/vertex-ai) is a service that exposes all foundation models available in Google Cloud, like `gemini-2.5-pro`, `gemini-2.5-flash`, etc.
-It also provides some non-Google models such as [Anthropic's Claude](https://cloud.google.com/vertex-ai/generative-ai/docs/partner-models/use-claude).
+[Gemini Enterprise Agent Platform](https://cloud.google.com/products/gemini-enterprise-agent-platform) is a service that exposes all foundation models available in Google Cloud, like `gemini-2.5-pro`, `gemini-2.5-flash`, etc.
+It also provides some non-Google models such as [Anthropic's Claude](https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/partner-models/claude).
 
 This will help you getting started with `ChatVertexAI` [chat models](/oss/javascript/langchain/models). For detailed documentation of all `ChatVertexAI` features and configurations head to the [API reference](https://reference.langchain.com/javascript/langchain-google-vertexai/index/ChatVertexAI).
 
@@ -37813,9 +38121,9 @@ Note that while logprobs are supported, Gemini has fairly restricted usage of th
 
 LangChain.js supports two different authentication methods based on whether
 you're running in a Node.js environment or a web environment. It also supports
-the authentication method used by Vertex AI Express Mode using either package.
+the authentication method used by Gemini Enterprise Agent Platform Express Mode using either package.
 
-To access `ChatVertexAI` models you'll need to setup Google VertexAI in your Google Cloud Platform (GCP) account, save the credentials file, and install the `@langchain/google-vertexai` integration package. On Node.js, that package uses [`@langchain/google-gauth`](https://github.com/langchain-ai/langchainjs/tree/main/libs/providers/langchain-google-gauth) for authentication (you do not need to install it separately).
+To access `ChatVertexAI` models you'll need to setup Gemini Enterprise Agent Platform in your Google Cloud Platform (GCP) account, save the credentials file, and install the `@langchain/google-vertexai` integration package. On Node.js, that package uses [`@langchain/google-gauth`](https://github.com/langchain-ai/langchainjs/tree/main/libs/providers/langchain-google-gauth) for authentication (you do not need to install it separately).
 
 ### Credentials
 
@@ -37835,7 +38143,7 @@ export GOOGLE_WEB_CREDENTIALS='{"type":"service_account","project_id":"YOUR_PROJ
 
 `GOOGLE_VERTEX_AI_WEB_CREDENTIALS` is also supported but deprecated.
 
-If you are using Vertex AI Express Mode, you can install either the `@langchain/google-vertexai` or `@langchain/google-vertexai-web` package.
+If you are using Gemini Enterprise Agent Platform Express Mode, you can install either the `@langchain/google-vertexai` or `@langchain/google-vertexai-web` package.
 You can then go to the [Express Mode](https://console.cloud.google.com/vertex-ai/studio) API Key page and set your API Key in the `GOOGLE_API_KEY` environment variable:
 
 ```bash
@@ -37851,7 +38159,7 @@ If you want to get automated tracing of your model calls you can also set your [
 
 ### Installation
 
-The LangChain `ChatVertexAI` integration lives in the `@langchain/google-vertexai` package:
+The LangChain Gemini Enterprise Agent Platform chat integration lives in the `@langchain/google-vertexai` package:
 
 <CodeGroup>
 ```bash npm
@@ -37937,7 +38245,7 @@ J'adore programmer.
 
 ## Tool calling with Google search retrieval
 
-It is possible to call the model with a Google search tool which you can use to [ground](https://cloud.google.com/vertex-ai/generative-ai/docs/model-reference/grounding) content generation with real-world information and reduce hallucinations.
+It is possible to call the model with a Google search tool which you can use to [ground](https://docs.cloud.google.com/gemini-enterprise-agent-platform/reference/models/grounding) content generation with real-world information and reduce hallucinations.
 
 Grounding is currently not supported by `gemini-2.0-flash-exp`.
 
@@ -38026,9 +38334,9 @@ You should now get results that are grounded in the data from your provided data
 
 ## Context caching
 
-Vertex AI offers context caching functionality, which helps optimize costs by storing and reusing long blocks of message content across multiple API requests. This is particularly useful when you have lengthy conversation histories or message segments that appear frequently in your interactions.
+Gemini Enterprise Agent Platform offers context caching functionality, which helps optimize costs by storing and reusing long blocks of message content across multiple API requests. This is particularly useful when you have lengthy conversation histories or message segments that appear frequently in your interactions.
 
-To use this feature, first create a context cache by following [this official guide](https://cloud.google.com/vertex-ai/generative-ai/docs/context-cache/context-cache-create).
+To use this feature, first create a context cache by following [this official guide](https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/context-cache/context-cache-create).
 
 Once you've created a cache, you can pass its id in as a runtime param as follows:
 
@@ -39867,7 +40175,7 @@ As of Aug 6, 2024, OpenAI supports a `strict` argument when calling tools that w
 </Info>
 
 <Warning>
-    If `strict: true` the tool definition will also be validated, and a subset of JSON schema are accepted. Crucially, schema cannot have optional args (those with default values). Read [the full docs](https://platform.openai.com/docs/guides/structured-outputs/supported-schemas) on what types of schema are supported.
+    If `strict: true` the tool definition will also be validated, and a subset of JSON schema are accepted. Crucially, schema cannot have optional args (those with default values). Read [the full docs](https://platform.openai.com/docs/guides/structured-outputs) on what types of schema are supported.
 </Warning>
 
 Here's an example with tool calling. Passing an extra `strict: true` argument to `.bindTools` will pass the param through to all tool definitions:
@@ -45655,9 +45963,9 @@ For detailed documentation of all `GoogleGenerativeAIEmbeddings` features and co
 # VertexAIEmbeddings integration
 Source: https://docs.langchain.com/oss/javascript/integrations/embeddings/google_vertex_ai
 
-[Google Vertex](https://cloud.google.com/vertex-ai) is a service that exposes all foundation models available in Google Cloud.
+[Gemini Enterprise Agent Platform](https://cloud.google.com/products/gemini-enterprise-agent-platform) is a service that exposes all foundation models available in Google Cloud.
 
-This will help you get started with Google Vertex AI [embedding models](/oss/javascript/integrations/embeddings) using LangChain. For detailed documentation on `VertexAIEmbeddings` features and configuration options, please refer to the [API reference](https://reference.langchain.com/javascript/langchain-google-vertexai/index/VertexAIEmbeddings).
+This will help you get started with Gemini Enterprise Agent Platform [embedding models](/oss/javascript/integrations/embeddings) using LangChain. For detailed documentation on `VertexAIEmbeddings` features and configuration options, please refer to the [API reference](https://reference.langchain.com/javascript/langchain-google-vertexai/index/VertexAIEmbeddings).
 
 ## Overview
 
@@ -45672,7 +45980,7 @@ This will help you get started with Google Vertex AI [embedding models](/oss/jav
 LangChain.js supports two different authentication methods based on whether
 you're running in a Node.js environment or a web environment.
 
-To access Vertex AI embedding models you'll need to set up Google Vertex AI in your Google Cloud Platform (GCP) account, save the credentials file, and install the `@langchain/google-vertexai` integration package. On Node.js, that package uses [`@langchain/google-gauth`](https://github.com/langchain-ai/langchainjs/tree/main/libs/providers/langchain-google-gauth) for authentication (you do not need to install it separately).
+To access Gemini Enterprise Agent Platform embedding models you'll need to set up Gemini Enterprise Agent Platform in your Google Cloud Platform (GCP) account, save the credentials file, and install the `@langchain/google-vertexai` integration package. On Node.js, that package uses [`@langchain/google-gauth`](https://github.com/langchain-ai/langchainjs/tree/main/libs/providers/langchain-google-gauth) for authentication (you do not need to install it separately).
 
 ### Credentials
 
@@ -45695,7 +46003,7 @@ If you want to get automated tracing of your model calls you can also set your [
 
 ### Installation
 
-The LangChain `VertexAIEmbeddings` integration lives in the `@langchain/google-vertexai` package:
+The LangChain Gemini Enterprise Agent Platform embeddings integration lives in the `@langchain/google-vertexai` package:
 
 <CodeGroup>
 ```bash npm
@@ -46356,7 +46664,7 @@ const embeddings = new GoogleGenerativeAIEmbeddings({
 ```
 
 </Accordion>
-<Accordion title="Google Vertex">
+<Accordion title="Gemini Enterprise Agent Platform">
 
 Install dependencies:
 
@@ -49370,18 +49678,18 @@ For detailed documentation of all Fireworks features and configurations head to 
 </div>
 
 
-# Google Vertex AI integration
+# Gemini Enterprise Agent Platform integration
 Source: https://docs.langchain.com/oss/javascript/integrations/llms/google_vertex_ai
 
 <Warning>
-**You are currently on a page documenting the use of Google Vertex models as text completion models. Many popular models available on Google Vertex are [chat completion models](/oss/javascript/langchain/models).**
+**You are currently on a page documenting the use of Gemini Enterprise Agent Platform models as text completion models. Many popular models available on Gemini Enterprise Agent Platform are [chat completion models](/oss/javascript/langchain/models).**
 
 You may be looking for [this page instead](/oss/javascript/integrations/chat/google_vertex_ai/).
 </Warning>
 
-[Google Vertex](https://cloud.google.com/vertex-ai) is a service that exposes all foundation models available in Google Cloud, like `gemini-2.5-pro`, `gemini-2.5-flash`, etc.
+[Gemini Enterprise Agent Platform](https://cloud.google.com/products/gemini-enterprise-agent-platform) is a service that exposes all foundation models available in Google Cloud, like `gemini-2.5-pro`, `gemini-2.5-flash`, etc.
 
-This will help you get started with VertexAI completion models (LLMs) using LangChain. For detailed documentation on `VertexAI` features and configuration options, please refer to the [API reference](https://reference.langchain.com/javascript/langchain-google-vertexai/index/VertexAI).
+This will help you get started with Gemini Enterprise Agent Platform completion models (LLMs) using LangChain. For detailed documentation on `VertexAI` features and configuration options, please refer to the [API reference](https://reference.langchain.com/javascript/langchain-google-vertexai/index/VertexAI).
 
 ## Overview
 
@@ -49396,13 +49704,13 @@ This will help you get started with VertexAI completion models (LLMs) using Lang
 LangChain.js supports two different authentication methods based on whether
 you're running in a Node.js environment or a web environment.
 
-To access VertexAI models you'll need to create a Google Cloud Platform (GCP) account, get an API key, and install the `@langchain/google-vertexai` integration package. On Node.js, that package uses [`@langchain/google-gauth`](https://github.com/langchain-ai/langchainjs/tree/main/libs/providers/langchain-google-gauth) for authentication (you do not need to install it separately).
+To access Gemini Enterprise Agent Platform models you'll need to create a Google Cloud Platform (GCP) account, get an API key, and install the `@langchain/google-vertexai` integration package. On Node.js, that package uses [`@langchain/google-gauth`](https://github.com/langchain-ai/langchainjs/tree/main/libs/providers/langchain-google-gauth) for authentication (you do not need to install it separately).
 
 ### Credentials
 
 #### Node.js
 
-You should make sure the Vertex AI API is
+You should make sure the Gemini Enterprise Agent Platform API is
 enabled for the relevant project and that you've authenticated to
 Google Cloud using one of these methods:
 
@@ -49418,7 +49726,7 @@ Google Cloud using one of these methods:
 
 #### Web
 
-To call Vertex AI models in web environments (like Edge functions), you'll need to install
+To call Gemini Enterprise Agent Platform models in web environments (like Edge functions), you'll need to install
 the `@langchain/google-vertexai-web` package.
 
 Then, set your service account credentials in `GOOGLE_WEB_CREDENTIALS` (or the deprecated `GOOGLE_VERTEX_AI_WEB_CREDENTIALS`):
@@ -49450,7 +49758,7 @@ If you want to get automated tracing of your model calls you can also set your [
 
 ### Installation
 
-The LangChain VertexAI integration lives in the `@langchain/google-vertexai` package:
+The LangChain Gemini Enterprise Agent Platform integration lives in the `@langchain/google-vertexai` package:
 
 <CodeGroup>
 ```bash npm
@@ -49496,7 +49804,7 @@ const llm = new VertexAI({
 ## Invocation
 
 ```typescript
-const inputText = "VertexAI is an AI company that "
+const inputText = "Gemini is an AI model family that "
 
 const completion = await llm.invoke(inputText)
 completion
@@ -50495,6 +50803,403 @@ console.log({ res });
 </div>
 
 
+# Store integrations
+Source: https://docs.langchain.com/oss/javascript/integrations/long-term-memory/index
+
+Stores enable [long-term memory](/oss/javascript/langgraph/stores) in LangGraph, allowing agents to persist and retrieve information across threads.
+
+To implement your own store for a custom storage backend, extend the [BaseStore](https://reference.langchain.com/javascript/langchain-langgraph-checkpoint/BaseStore) interface. To deploy a custom store on Agent Server, see [Add a custom store](/langsmith/custom-store).
+
+| Backend | Package | Source |
+|---------|---------|--------|
+| [In-memory](https://reference.langchain.com/javascript/langchain-langgraph-checkpoint/InMemoryStore) | [`@langchain/langgraph-checkpoint`](https://www.npmjs.com/package/@langchain/langgraph-checkpoint) | [langchain-ai/langgraphjs](https://github.com/langchain-ai/langgraphjs/tree/main/libs/checkpoint) |
+| [PostgreSQL](https://reference.langchain.com/javascript/langchain-langgraph-checkpoint-postgres/store/PostgresStore) | [`@langchain/langgraph-checkpoint-postgres`](https://www.npmjs.com/package/@langchain/langgraph-checkpoint-postgres) | [langchain-ai/langgraphjs](https://github.com/langchain-ai/langgraphjs/tree/main/libs/checkpoint-postgres) |
+| [Redis](https://reference.langchain.com/javascript/langchain-langgraph-checkpoint-redis/store/RedisStore) | [`@langchain/langgraph-checkpoint-redis`](https://www.npmjs.com/package/@langchain/langgraph-checkpoint-redis) | [langchain-ai/langgraphjs](https://github.com/langchain-ai/langgraphjs/tree/main/libs/checkpoint-redis) |
+| [MongoDB](/oss/javascript/integrations/memory/mongodb-long-term-memory) | [`@langchain/langgraph-checkpoint-mongodb`](https://www.npmjs.com/package/@langchain/langgraph-checkpoint-mongodb) | [langchain-ai/langgraphjs](https://github.com/langchain-ai/langgraphjs/tree/main/libs/checkpoint-mongodb) |
+
+---
+
+<div className="source-links">
+<Callout icon="terminal-2">
+    [Connect these docs](/use-these-docs) to Claude, VSCode, and more via MCP for real-time answers.
+</Callout>
+<Callout icon="edit">
+    [Edit this page on GitHub](https://github.com/langchain-ai/docs/edit/main/src/oss/javascript/integrations/long-term-memory/index.mdx) or [file an issue](https://github.com/langchain-ai/docs/issues/new/choose).
+</Callout>
+</div>
+
+
+# Memory integrations
+Source: https://docs.langchain.com/oss/javascript/integrations/memory/index
+
+Memory integrations provide persistent backends for [short-term memory](/oss/javascript/langchain/short-term-memory) (checkpointers) and [long-term memory](/oss/javascript/langchain/long-term-memory) (stores).
+
+## Short-term memory (checkpointers)
+
+| Backend | Guide |
+|---------|-------|
+| MongoDB Atlas | [Short-term memory with MongoDB Atlas](/oss/javascript/integrations/memory/mongodb-short-term-memory) |
+
+## Long-term memory (stores)
+
+| Backend | Guide |
+|---------|-------|
+| MongoDB Atlas | [Long-term memory with MongoDB Atlas](/oss/javascript/integrations/memory/mongodb-long-term-memory) |
+
+See also the full [store integrations](/oss/javascript/integrations/long-term-memory) list.
+
+---
+
+<div className="source-links">
+<Callout icon="terminal-2">
+    [Connect these docs](/use-these-docs) to Claude, VSCode, and more via MCP for real-time answers.
+</Callout>
+<Callout icon="edit">
+    [Edit this page on GitHub](https://github.com/langchain-ai/docs/edit/main/src/oss/javascript/integrations/memory/index.mdx) or [file an issue](https://github.com/langchain-ai/docs/issues/new/choose).
+</Callout>
+</div>
+
+
+# Long-term memory with MongoDB Atlas
+Source: https://docs.langchain.com/oss/javascript/integrations/memory/mongodb-long-term-memory
+
+[Long-term memory](/oss/javascript/langchain/long-term-memory) lets your agent store and recall information across different conversations and sessions. This guide shows how to use [MongoDB Atlas](https://www.mongodb.com/docs/atlas/) as the persistent store backend.
+
+MongoDB stores memories as documents in a collection. With an Atlas Vector Search index, the same store can run semantic search over stored memories.
+
+<Tip>
+For a deeper dive into memory types and strategies for writing memories, see the [Memory conceptual guide](/oss/javascript/concepts/memory#long-term-memory).
+</Tip>
+
+## Setup
+
+### Installation
+
+`MongoDBStore` ships in the same package as the MongoDB checkpointer:
+
+<CodeGroup>
+```bash npm
+npm install @langchain/langgraph-checkpoint-mongodb
+```
+
+```bash yarn
+yarn add @langchain/langgraph-checkpoint-mongodb
+```
+
+```bash pnpm
+pnpm add @langchain/langgraph-checkpoint-mongodb
+```
+</CodeGroup>
+
+### Credentials
+
+Set your Atlas connection string:
+
+```bash
+export MONGODB_ATLAS_URI="your-atlas-connection-string"
+```
+
+If you want automated tracing of your model calls, set your [LangSmith](/langsmith/home) API key:
+
+```bash
+export LANGSMITH_API_KEY="your-api-key"
+export LANGSMITH_TRACING="true"
+```
+
+## Usage
+
+Create a `MongoDBStore` with `fromConnString` (await the promise) and pass it to `createAgent`. `fromConnString` connects the client and calls `start()` to ensure indexes exist. Import `MongoDBStore` from the package root; there is no `/store` subpath export.
+
+```typescript
+import { createAgent } from "langchain";
+import { MongoDBStore } from "@langchain/langgraph-checkpoint-mongodb";
+
+const MONGODB_ATLAS_URI = process.env.MONGODB_ATLAS_URI;
+if (!MONGODB_ATLAS_URI) {
+  throw new Error("MONGODB_ATLAS_URI is required");
+}
+
+const store = await MongoDBStore.fromConnString(MONGODB_ATLAS_URI);
+
+const agent = createAgent({
+  model: "anthropic:claude-sonnet-4-6",
+  tools: [],
+  store,
+});
+```
+
+## Memory storage
+
+LangGraph stores memories as JSON documents organized by `namespace` and `key`. Namespaces typically include a user or org ID to keep memories scoped.
+
+The example below configures vector indexing so `store.search` can run semantic queries. Pass an embeddings instance and `indexConfig`. Install `@langchain/openai` if you use `OpenAIEmbeddings` (or swap in another embeddings class):
+
+```typescript
+import { OpenAIEmbeddings } from "@langchain/openai";
+import { MongoDBStore } from "@langchain/langgraph-checkpoint-mongodb";
+
+const MONGODB_ATLAS_URI = process.env.MONGODB_ATLAS_URI;
+if (!MONGODB_ATLAS_URI) {
+  throw new Error("MONGODB_ATLAS_URI is required");
+}
+
+const store = await MongoDBStore.fromConnString(MONGODB_ATLAS_URI, {
+  embeddings: new OpenAIEmbeddings({ model: "text-embedding-3-small" }),
+  indexConfig: {
+    name: "store_vector_index",
+    dims: 1536,
+    similarityFunction: "cosine",
+  },
+});
+
+const userId = "my-user";
+const applicationContext = "chitchat";
+const namespace = [userId, applicationContext];
+
+await store.put(namespace, "a-memory", {
+  rules: [
+    "User likes short, direct language",
+    "User only speaks English and TypeScript",
+  ],
+  "my-key": "my-value",
+});
+
+const item = await store.get(namespace, "a-memory");
+const items = await store.search(namespace, {
+  filter: { "my-key": "my-value" },
+  query: "language preferences",
+});
+```
+
+For more information about store operations, see the [Stores](/oss/javascript/langgraph/stores) guide.
+
+## Read long-term memory in tools
+
+Tools can read from the store using the `runtime` parameter, which LangGraph injects automatically:
+
+```typescript
+import * as z from "zod";
+import { createAgent, tool, type ToolRuntime } from "langchain";
+import { MongoDBStore } from "@langchain/langgraph-checkpoint-mongodb";
+
+const MONGODB_ATLAS_URI = process.env.MONGODB_ATLAS_URI;
+if (!MONGODB_ATLAS_URI) {
+  throw new Error("MONGODB_ATLAS_URI is required");
+}
+
+const store = await MongoDBStore.fromConnString(MONGODB_ATLAS_URI);
+
+const contextSchema = z.object({ userId: z.string() });
+
+await store.put(["users"], "user_123", {
+  name: "John Smith",
+  language: "English",
+});
+
+const getUserInfo = tool(
+  async (_, runtime: ToolRuntime<unknown, z.infer<typeof contextSchema>>) => {
+    const userId = runtime.context.userId;
+    if (!userId) throw new Error("userId is required");
+    const userInfo = await runtime.store?.get(["users"], userId);
+    return userInfo?.value ? JSON.stringify(userInfo.value) : "Unknown user";
+  },
+  {
+    name: "getUserInfo",
+    description: "Look up user info by userId from the store.",
+    schema: z.object({}),
+  },
+);
+
+const agent = createAgent({
+  model: "anthropic:claude-sonnet-4-6",
+  tools: [getUserInfo],
+  contextSchema,
+  store,
+});
+
+await agent.invoke(
+  { messages: [{ role: "user", content: "look up user information" }] },
+  { context: { userId: "user_123" } },
+);
+```
+
+## Write long-term memory from tools
+
+Tools can also write to the store using `runtime.store.put`, persisting data that survives across threads:
+
+```typescript
+import * as z from "zod";
+import { tool, createAgent, type ToolRuntime } from "langchain";
+import { MongoDBStore } from "@langchain/langgraph-checkpoint-mongodb";
+
+const MONGODB_ATLAS_URI = process.env.MONGODB_ATLAS_URI;
+if (!MONGODB_ATLAS_URI) {
+  throw new Error("MONGODB_ATLAS_URI is required");
+}
+
+const store = await MongoDBStore.fromConnString(MONGODB_ATLAS_URI);
+
+const contextSchema = z.object({ userId: z.string() });
+
+const UserInfo = z.object({ name: z.string() });
+
+const saveUserInfo = tool(
+  async (
+    userInfo: z.infer<typeof UserInfo>,
+    runtime: ToolRuntime<unknown, z.infer<typeof contextSchema>>,
+  ) => {
+    const userId = runtime.context.userId;
+    if (!userId) throw new Error("userId is required");
+    await runtime.store?.put(["users"], userId, userInfo);
+    return "Successfully saved user info.";
+  },
+  { name: "save_user_info", description: "Save user info", schema: UserInfo },
+);
+
+const agent = createAgent({
+  model: "anthropic:claude-sonnet-4-6",
+  tools: [saveUserInfo],
+  contextSchema,
+  store,
+});
+
+await agent.invoke(
+  { messages: [{ role: "user", content: "My name is John Smith" }] },
+  { context: { userId: "user_123" } },
+);
+
+const result = await store.get(["users"], "user_123");
+console.log(result?.value);
+```
+
+## See also
+
+- [Long-term memory](/oss/javascript/langchain/long-term-memory)
+- [Stores](/oss/javascript/langgraph/stores)
+- [Store integrations](/oss/javascript/integrations/long-term-memory)
+- [Short-term memory with MongoDB Atlas](/oss/javascript/integrations/memory/mongodb-short-term-memory)
+
+---
+
+<div className="source-links">
+<Callout icon="terminal-2">
+    [Connect these docs](/use-these-docs) to Claude, VSCode, and more via MCP for real-time answers.
+</Callout>
+<Callout icon="edit">
+    [Edit this page on GitHub](https://github.com/langchain-ai/docs/edit/main/src/oss/javascript/integrations/memory/mongodb-long-term-memory.mdx) or [file an issue](https://github.com/langchain-ai/docs/issues/new/choose).
+</Callout>
+</div>
+
+
+# Short-term memory with MongoDB Atlas
+Source: https://docs.langchain.com/oss/javascript/integrations/memory/mongodb-short-term-memory
+
+[Short-term memory](/oss/javascript/langchain/short-term-memory) lets your agent remember previous interactions within a single thread or conversation. This guide shows how to use [MongoDB Atlas](https://www.mongodb.com/docs/atlas/) as the persistent checkpointer backend.
+
+MongoDB stores conversation state as documents in a collection, so threads can resume across process restarts and deployments.
+
+<Tip>
+Need to remember information **across** conversations? Use [long-term memory with MongoDB Atlas](/oss/javascript/integrations/memory/mongodb-long-term-memory) to store and recall data across different threads and sessions.
+</Tip>
+
+## Setup
+
+### Installation
+
+<CodeGroup>
+```bash npm
+npm install @langchain/langgraph-checkpoint-mongodb mongodb
+```
+
+```bash yarn
+yarn add @langchain/langgraph-checkpoint-mongodb mongodb
+```
+
+```bash pnpm
+pnpm add @langchain/langgraph-checkpoint-mongodb mongodb
+```
+</CodeGroup>
+
+### Credentials
+
+Set your Atlas connection string:
+
+```bash
+export MONGODB_ATLAS_URI="your-atlas-connection-string"
+```
+
+If you want automated tracing of your model calls, set your [LangSmith](/langsmith/home) API key:
+
+```bash
+export LANGSMITH_API_KEY="your-api-key"
+export LANGSMITH_TRACING="true"
+```
+
+## Usage
+
+Create a `MongoClient`, construct `MongoDBSaver`, and call `setup()` once so indexes exist. There is no `MongoDBSaver.fromConnString` helper.
+
+```typescript
+import { createAgent, tool } from "langchain";
+import { MongoDBSaver } from "@langchain/langgraph-checkpoint-mongodb";
+import { MongoClient } from "mongodb";
+import * as z from "zod";
+
+const getUserInfo = tool(() => "No user profile on file.", {
+  name: "get_user_info",
+  description: "Look up information about the current user.",
+  schema: z.object({}),
+});
+
+const MONGODB_ATLAS_URI = process.env.MONGODB_ATLAS_URI;
+if (!MONGODB_ATLAS_URI) {
+  throw new Error("MONGODB_ATLAS_URI is required");
+}
+
+const client = new MongoClient(MONGODB_ATLAS_URI);
+const checkpointer = new MongoDBSaver({ client });
+await checkpointer.setup();
+
+const agent = createAgent({
+  model: "anthropic:claude-sonnet-4-6",
+  tools: [getUserInfo],
+  checkpointer,
+});
+
+const threadConfig = { configurable: { thread_id: "1" } };
+let result = await agent.invoke(
+  { messages: [{ role: "user", content: "Hi! My name is Bob." }] },
+  threadConfig,
+);
+console.log(result.messages.at(-1)?.content);
+
+result = await agent.invoke(
+  { messages: [{ role: "user", content: "What's my name?" }] },
+  threadConfig,
+);
+console.log(result.messages.at(-1)?.content);
+
+await client.close();
+```
+
+## Next steps
+
+- Customize agent state, trim or summarize history, and access memory from tools in the [short-term memory](/oss/javascript/langchain/short-term-memory) guide. Pass the same `MongoDBSaver` as `checkpointer`.
+- For cross-thread persistence, see [long-term memory with MongoDB Atlas](/oss/javascript/integrations/memory/mongodb-long-term-memory).
+- See the [checkpointer libraries](/oss/javascript/langgraph/checkpointers#checkpointer-libraries) list for other backends.
+
+---
+
+<div className="source-links">
+<Callout icon="terminal-2">
+    [Connect these docs](/use-these-docs) to Claude, VSCode, and more via MCP for real-time answers.
+</Callout>
+<Callout icon="edit">
+    [Edit this page on GitHub](https://github.com/langchain-ai/docs/edit/main/src/oss/javascript/integrations/memory/mongodb-short-term-memory.mdx) or [file an issue](https://github.com/langchain-ai/docs/issues/new/choose).
+</Callout>
+</div>
+
+
 # Anthropic integration
 Source: https://docs.langchain.com/oss/javascript/integrations/middleware/anthropic
 
@@ -50837,7 +51542,7 @@ Browse the complete collection of integrations available for JavaScript/TypeScri
     href="/oss/javascript/integrations/providers/google"
     icon="brand-google"
   >
-    Integrate with Google's AI services including Gemini and Vertex AI.
+    Integrate with Google's AI services including Gemini and Gemini Enterprise Agent Platform.
   </Card>
 
   <Card
@@ -50989,7 +51694,7 @@ Connect LangGraph agents to front ends and observability platforms.
     href="/oss/javascript/integrations/chat/google"
     icon="brand-google"
   >
-    Google's Gemini models via AI Studio and Vertex AI.
+    Google's Gemini models via AI Studio and Gemini Enterprise Agent Platform.
   </Card>
 
   <Card
@@ -51103,7 +51808,7 @@ Connect LangGraph agents to front ends and observability platforms.
 
 
   <Card
-    title="Google Vertex AI"
+    title="Gemini Enterprise Agent Platform"
     href="/oss/javascript/integrations/llms/google_vertex_ai"
     icon="brand-google"
   >
@@ -51202,11 +51907,11 @@ Connect LangGraph agents to front ends and observability platforms.
   </Card>
 
   <Card
-    title="Google Vertex AI"
+    title="Gemini Enterprise Agent Platform"
     href="/oss/javascript/integrations/embeddings/google_vertex_ai"
     icon="brand-google"
   >
-    Enterprise embedding models through Vertex AI.
+    Enterprise embedding models through Gemini Enterprise Agent Platform.
   </Card>
 
 
@@ -52574,7 +53279,7 @@ try {
 # Google integrations
 Source: https://docs.langchain.com/oss/javascript/integrations/providers/google
 
-LangChain provides integrations with [Google AI Studio](https://aistudio.google.com/) and [Google Cloud Vertex AI](https://cloud.google.com/vertex-ai) through the `@langchain/google` package.
+LangChain provides integrations with [Google AI Studio](https://aistudio.google.com/) and [Gemini Enterprise Agent Platform](https://cloud.google.com/products/gemini-enterprise-agent-platform) through the `@langchain/google` package.
 
 <Info>
   Looking for the older `@langchain/google-genai` or `@langchain/google-vertexai` packages? They are maintained under [long-term support](#legacy-packages) but are no longer recommended for new projects.
@@ -52582,7 +53287,7 @@ LangChain provides integrations with [Google AI Studio](https://aistudio.google.
 
 ## Chat models
 
-The [`ChatGoogle`](/oss/javascript/integrations/chat/google) class is the recommended way to access Gemini models (such as `gemini-2.5-pro`, `gemini-2.5-flash`, and `gemini-3.1-pro-preview`) and open models like Gemma. It supports both Google AI Studio and Vertex AI in a single interface
+The [`ChatGoogle`](/oss/javascript/integrations/chat/google) class is the recommended way to access Gemini models (such as `gemini-2.5-pro`, `gemini-2.5-flash`, and `gemini-3.1-pro-preview`) and open models like Gemma. It supports both Google AI Studio and Gemini Enterprise Agent Platform in a single interface
 
 <Tip>
 See [this section for general instructions on installing LangChain packages](/oss/javascript/langchain/install).
@@ -52635,11 +53340,11 @@ const res = await model.invoke([
   </Card>
 </CardGroup>
 
-### Third-party models on Vertex AI
+### Third-party models on Gemini Enterprise Agent Platform
 
 [Anthropic](/oss/javascript/integrations/chat/anthropic) Claude models are also available through
-the [Vertex AI](https://cloud.google.com/vertex-ai/generative-ai/docs/partner-models/use-claude)
-platform. See [using Claude on Vertex AI](https://cloud.google.com/vertex-ai/generative-ai/docs/partner-models/use-claude)
+the [Gemini Enterprise Agent Platform](https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/partner-models/claude)
+platform. See [using Claude on Gemini Enterprise Agent Platform](https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/partner-models/claude)
 for more information about enabling access to the models and the model names to use.
 
 ### Postgres vector store (Cloud SQL)
@@ -52666,7 +53371,7 @@ npm install @langchain/google-genai @langchain/core
 
 ### `@langchain/google-vertexai`
 
-The `@langchain/google-vertexai` package provides [`ChatVertexAI`](/oss/javascript/integrations/chat/google_vertex_ai), [`VertexAIEmbeddings`](/oss/javascript/integrations/embeddings/google_vertex_ai), and [`VertexAI`](/oss/javascript/integrations/llms/google_vertex_ai) for Vertex AI on Node.js. It depends on [`@langchain/google-gauth`](#%40langchain%2Fgoogle-gauth) for authentication. This package is superseded by the Vertex AI support built into `@langchain/google` for chat.
+The `@langchain/google-vertexai` package provides [`ChatVertexAI`](/oss/javascript/integrations/chat/google_vertex_ai), [`VertexAIEmbeddings`](/oss/javascript/integrations/embeddings/google_vertex_ai), and [`VertexAI`](/oss/javascript/integrations/llms/google_vertex_ai) for Gemini Enterprise Agent Platform on Node.js. It depends on [`@langchain/google-gauth`](#%40langchain%2Fgoogle-gauth) for authentication. This package is superseded by the Gemini Enterprise Agent Platform support built into `@langchain/google` for chat.
 
 ```bash
 npm install @langchain/google-vertexai @langchain/core
@@ -52674,17 +53379,17 @@ npm install @langchain/google-vertexai @langchain/core
 
 ### `@langchain/google-vertexai-web`
 
-The `@langchain/google-vertexai-web` package provides the same Vertex AI chat, embedding, and LLM classes for browser and Edge runtimes. Install this package (not `@langchain/google-vertexai`) when running in web environments. It depends on [`@langchain/google-webauth`](#%40langchain%2Fgoogle-webauth).
+The `@langchain/google-vertexai-web` package provides the same Gemini Enterprise Agent Platform chat, embedding, and LLM classes for browser and Edge runtimes. Install this package (not `@langchain/google-vertexai`) when running in web environments. It depends on [`@langchain/google-webauth`](#%40langchain%2Fgoogle-webauth).
 
 ```bash
 npm install @langchain/google-vertexai-web @langchain/core
 ```
 
-See the [Vertex AI chat](/oss/javascript/integrations/chat/google_vertex_ai) page for `GOOGLE_WEB_CREDENTIALS` and web import paths.
+See the [Gemini Enterprise Agent Platform chat](/oss/javascript/integrations/chat/google_vertex_ai) page for `GOOGLE_WEB_CREDENTIALS` and web import paths.
 
 ### `@langchain/google-webauth`
 
-The [`@langchain/google-webauth`](https://github.com/langchain-ai/langchainjs/tree/main/libs/providers/langchain-google-webauth) package provides browser and Edge authentication for legacy Vertex AI integrations. It is installed automatically with `@langchain/google-vertexai-web`—do not install it alongside `@langchain/google-gauth`.
+The [`@langchain/google-webauth`](https://github.com/langchain-ai/langchainjs/tree/main/libs/providers/langchain-google-webauth) package provides browser and Edge authentication for legacy Gemini Enterprise Agent Platform integrations. It is installed automatically with `@langchain/google-vertexai-web`—do not install it alongside `@langchain/google-gauth`.
 
 Set service account JSON in `GOOGLE_WEB_CREDENTIALS` (or the deprecated `GOOGLE_VERTEX_AI_WEB_CREDENTIALS`). You can also pass `apiKey` or `authOptions` to the model constructor, or set the `API_KEY` environment variable.
 
@@ -52713,7 +53418,7 @@ The [`@langchain/google-cloud-sql-pg`](https://www.npmjs.com/package/@langchain/
 The [`@langchain/google-common`](https://github.com/langchain-ai/langchainjs/tree/main/libs/providers/langchain-google-common) package provides shared Gemini client abstractions for legacy integrations such as [`@langchain/google-vertexai`](/oss/javascript/integrations/chat/google_vertex_ai). It does not include authorization code and is **not** a stand-alone package—do not install or import it directly.
 
 <Tip>
-  To migrate from `@langchain/google-genai` or `@langchain/google-vertexai` to `@langchain/google`, see the [ChatGoogle](/oss/javascript/integrations/chat/google) page for setup instructions. The `ChatGoogle` class provides equivalent functionality with unified access to both Google AI Studio and Vertex AI.
+  To migrate from `@langchain/google-genai` or `@langchain/google-vertexai` to `@langchain/google`, see the [ChatGoogle](/oss/javascript/integrations/chat/google) page for setup instructions. The `ChatGoogle` class provides equivalent functionality with unified access to both Google AI Studio and Gemini Enterprise Agent Platform.
 </Tip>
 
 ---
@@ -53608,6 +54313,7 @@ A **provider** is a third-party service or platform that LangChain integrates wi
 | [Ollama](/oss/javascript/integrations/chat/ollama) | [`@langchain/ollama`](https://www.npmjs.com/package/@langchain/ollama) | ![Downloads](https://img.shields.io/npm/dm/@langchain/ollama) | ![NPM](https://img.shields.io/npm/v/@langchain/ollama) |
 | [OpenAI](/oss/javascript/integrations/providers/openai) | [`@langchain/openai`](https://www.npmjs.com/package/@langchain/openai) | ![Downloads](https://img.shields.io/npm/dm/@langchain/openai) | ![NPM](https://img.shields.io/npm/v/@langchain/openai) |
 | [OpenRouter](/oss/javascript/integrations/chat/openrouter) | [`@langchain/openrouter`](https://www.npmjs.com/package/@langchain/openrouter) | ![Downloads](https://img.shields.io/npm/dm/@langchain/openrouter) | ![NPM](https://img.shields.io/npm/v/@langchain/openrouter) |
+| [Oracle AI Vector Search](/oss/javascript/integrations/vectorstores/oracleai) | [`@oracle/langchain-oracledb`](https://www.npmjs.com/package/@oracle/langchain-oracledb) | ![Downloads](https://img.shields.io/npm/dm/@oracle/langchain-oracledb) | ![NPM](https://img.shields.io/npm/v/@oracle/langchain-oracledb) |
 | [Perplexity](/oss/javascript/integrations/providers/perplexity) | [`@langchain/perplexity`](https://www.npmjs.com/package/@langchain/perplexity) | ![Downloads](https://img.shields.io/npm/dm/@langchain/perplexity) | ![NPM](https://img.shields.io/npm/v/@langchain/perplexity) |
 | [PGVector](/oss/javascript/integrations/vectorstores/pgvector) | [`@langchain/pgvector`](https://www.npmjs.com/package/@langchain/pgvector) | ![Downloads](https://img.shields.io/npm/dm/@langchain/pgvector) | ![NPM](https://img.shields.io/npm/v/@langchain/pgvector) |
 | [Pinecone](/oss/javascript/integrations/vectorstores/pinecone) | [`@langchain/pinecone`](https://www.npmjs.com/package/@langchain/pinecone) | ![Downloads](https://img.shields.io/npm/dm/@langchain/pinecone) | ![NPM](https://img.shields.io/npm/v/@langchain/pinecone) |
@@ -54444,9 +55150,9 @@ Refer to the vector store [integration docs](/oss/javascript/integrations/vector
 | [`ExaRetriever`](/oss/javascript/integrations/retrievers/exa) | <span data-sort-value="0"></span> | <span data-sort-value="0"></span> | [`@langchain/exa`](https://www.npmjs.com/package/@langchain/exa) | <span data-sort-value="76768"><a href="https://www.npmjs.com/package/@langchain/exa" target="_blank"><img src="https://img.shields.io/npm/dm/@langchain/exa?style=flat-square&label=%20&" alt="Downloads per month" noZoom class="rounded not-prose" /></a></span> |
 | [`PerplexitySearchRetriever`](/oss/javascript/integrations/retrievers/perplexity_search) | <span data-sort-value="0"></span> | <span data-sort-value="0"></span> | [`@langchain/perplexity`](https://www.npmjs.com/package/@langchain/perplexity) | <span data-sort-value="750"><a href="https://www.npmjs.com/package/@langchain/perplexity" target="_blank"><img src="https://img.shields.io/npm/dm/@langchain/perplexity?style=flat-square&label=%20&" alt="Downloads per month" noZoom class="rounded not-prose" /></a></span> |
 | [`AlchemystRetriever`](https://getalchemystai.com/docs) | <span data-sort-value="0"></span> | <span data-sort-value="0"></span> | [`@alchemystai/langchain-js`](https://www.npmjs.com/package/@alchemystai/langchain-js) | <span data-sort-value="39"><a href="https://www.npmjs.com/package/@alchemystai/langchain-js" target="_blank"><img src="https://img.shields.io/npm/dm/@alchemystai/langchain-js?style=flat-square&label=%20&" alt="Downloads per month" noZoom class="rounded not-prose" /></a></span> |
+| [`SourceyRetriever`](/oss/javascript/integrations/retrievers/sourcey) | <span data-sort-value="0"></span> | <span data-sort-value="0"></span> | [`langchain-sourcey`](https://www.npmjs.com/package/langchain-sourcey) | <span data-sort-value="7"><a href="https://www.npmjs.com/package/langchain-sourcey" target="_blank"><img src="https://img.shields.io/npm/dm/langchain-sourcey?style=flat-square&label=%20&" alt="Downloads per month" noZoom class="rounded not-prose" /></a></span> |
 | [`Hyde`](/oss/javascript/integrations/retrievers/hyde) | <span data-sort-value="0"></span> | <span data-sort-value="0"></span> |  | <span data-sort-value="-1">N/A</span> |
 | [`Self Querying with SAP HANA Cloud Vector Engine`](/oss/javascript/integrations/retrievers/self_query/hanavector_self_query) | <span data-sort-value="0"></span> | <span data-sort-value="0"></span> |  | <span data-sort-value="-1">N/A</span> |
-| [`SourceyRetriever`](/oss/javascript/integrations/retrievers/sourcey) | <span data-sort-value="0"></span> | <span data-sort-value="0"></span> |  | <span data-sort-value="-1">N/A</span> |
 | [`Time-weighted`](/oss/javascript/integrations/retrievers/time-weighted-retriever) | <span data-sort-value="0"></span> | <span data-sort-value="0"></span> |  | <span data-sort-value="-1">N/A</span> |
 
 </div>
@@ -56576,7 +57282,7 @@ const response = await llm.invoke(
 );
 ```
 
-For more information, see [Anthropic's Web Fetch Tool documentation](https://docs.anthropic.com/en/docs/build-with-claude/tool-use/web-fetch-tool).
+For more information, see [Anthropic's Web Fetch Tool documentation](https://docs.anthropic.com/en/docs/agents-and-tools/tool-use/web-fetch-tool).
 
 ### Tool search tools
 
@@ -56641,7 +57347,7 @@ const response = await llm.invoke("What is the weather in San Francisco?", {
 });
 ```
 
-For more information, see [Anthropic's Tool Search documentation](https://docs.anthropic.com/en/docs/build-with-claude/tool-use/tool-search-tool).
+For more information, see [Anthropic's Tool Search documentation](https://docs.anthropic.com/en/docs/agents-and-tools/tool-use/tool-search-tool).
 
 ### Text editor tool
 
@@ -56778,7 +57484,7 @@ const computer = tools.computer_20251124({
 });
 ```
 
-For more information, see [Anthropic's Computer Use documentation](https://docs.anthropic.com/en/docs/agents-and-tools/tool-use/computer-use).
+For more information, see [Anthropic's Computer Use documentation](https://docs.anthropic.com/en/docs/agents-and-tools/tool-use/computer-use-tool).
 
 ### Code execution tool
 
@@ -57524,10 +58230,10 @@ const toolsUser2 = await composio.tools.get('user_2', 'GITHUB');
 
 // Tools will use the respective user's credentials
 // User 1's agent will act on User 1's GitHub account
-const agent1 = createAgent(model, toolsUser1);
+const agent1 = createAgent({ model, tools: toolsUser1 });
 
 // User 2's agent will act on User 2's GitHub account
-const agent2 = createAgent(model, toolsUser2);
+const agent2 = createAgent({ model, tools: toolsUser2 });
 ```
 
 ## Event-driven workflows
@@ -58688,7 +59394,7 @@ const groundingMetadata = res.response_metadata?.groundingMetadata;
 console.log(groundingMetadata?.googleMapsWidgetContextToken);
 ```
 
-For more information, see [Google's Google Maps grounding documentation](https://ai.google.dev/gemini-api/docs/grounding/google-maps).
+For more information, see [Google's Google Maps grounding documentation](https://ai.google.dev/gemini-api/docs/maps-grounding).
 
 ### File search
 
@@ -58767,11 +59473,11 @@ const res = await llm.invoke("Use the tools from the MCP server to help me.");
 console.log(res.text);
 ```
 
-For more information, see [Google's MCP documentation](https://ai.google.dev/gemini-api/docs/mcp).
+For more information, see [Google's MCP documentation](https://ai.google.dev/gemini-api/docs/function-calling).
 
-### Vertex AI Search data store
+### Agent Search on Gemini Enterprise Agent Platform data store
 
-If you are using Vertex AI (`platformType: "gcp"`), you can ground responses using a Vertex AI Search data store.
+If you are using Gemini Enterprise Agent Platform (`platformType: "gcp"`), you can ground responses using an Agent Search data store.
 
 ```typescript
 import { ChatGoogle } from "@langchain/google";
@@ -58799,7 +59505,7 @@ const res = await llm.invoke(
 console.log(res.text);
 ```
 
-For more information, see [Google's Vertex AI Search grounding documentation](https://cloud.google.com/vertex-ai/generative-ai/docs/grounding/ground-with-vertex-ai-search).
+For more information, see [Google's Agent Search grounding documentation](https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/grounding/grounding-with-vertex-ai-search).
 
 ---
 
@@ -59015,6 +59721,19 @@ Source: https://docs.langchain.com/oss/javascript/integrations/tools/index
 [Tools](/oss/javascript/langchain/tools) are utilities designed to be called by a model: their inputs are designed to be generated by models, and their outputs are designed to be passed back to models.
 
 A [toolkit](/oss/javascript/langchain/tools#prebuilt-tools) is a collection of tools meant to be used together.
+
+## Web search
+
+The following table shows tools that execute online searches in some shape or form:
+
+| Tool/Toolkit | Free/Paid | Return Data |
+|-------------|-----------|-------------|
+| [Diffbot](https://github.com/diffbot/langchain-diffbot) | Free | URL, Snippet, Title, Date, Knowledge Graph (Organizations, News, People, Places, Deals) |
+| [Exa Search](/oss/javascript/integrations/tools/exa_search) | 1000 free searches/month | URL, Author, Title, Published Date |
+| [Nia Toolkit](/oss/javascript/integrations/tools/nia) | Free tier available | Code, Docs, Metadata, Sources |
+| [Perplexity Search](/oss/javascript/integrations/tools/perplexity_search) | Paid (with monthly free tier) | URL, Title, Snippet, Date, Last Updated |
+| [TalorData SERP](https://docs.talordata.com/serp-api/integration/sdk-integration/how-to-set-up-talordata-with-langchain) | Paid | Title, URL, snippet, position, knowledge graph, answer box, AI overview |
+| [Tavily Search](/oss/javascript/integrations/tools/tavily_search) | 1000 free searches/month | URL, Content, Title, Images, Answer |
 
 ## Integration platforms
 
@@ -62395,11 +63114,11 @@ Source: https://docs.langchain.com/oss/javascript/integrations/vectorstores/azur
 Please use the new [Azure DocumentDB](/oss/javascript/integrations/vectorstores/azure_documentdb) integration instead. The old class names (`AzureCosmosDBMongoDBVectorStore`, etc.) are still available as deprecated aliases for backwards compatibility, but you should migrate to the new `AzureDocumentDBVectorStore` class.
 </Warning>
 
-> [Azure Cosmos DB for MongoDB vCore](https://learn.microsoft.com/azure/cosmos-db/mongodb/vcore/) makes it easy to create a database with full native MongoDB support. You can apply your MongoDB experience and continue to use your favorite MongoDB drivers, SDKs, and tools by pointing your application to the API for MongoDB vCore account’s connection string. Use vector search in Azure Cosmos DB for MongoDB vCore to seamlessly integrate your AI-based applications with your data that’s stored in Azure Cosmos DB.
+> [Azure Cosmos DB for MongoDB vCore](https://learn.microsoft.com/en-us/azure/documentdb/) makes it easy to create a database with full native MongoDB support. You can apply your MongoDB experience and continue to use your favorite MongoDB drivers, SDKs, and tools by pointing your application to the API for MongoDB vCore account’s connection string. Use vector search in Azure Cosmos DB for MongoDB vCore to seamlessly integrate your AI-based applications with your data that’s stored in Azure Cosmos DB.
 
 Azure Cosmos DB for MongoDB vCore provides developers with a fully managed MongoDB-compatible database service for building modern applications with a familiar architecture.
 
-Learn how to leverage the vector search capabilities of Azure Cosmos DB for MongoDB vCore from [this page](https://learn.microsoft.com/azure/cosmos-db/mongodb/vcore/vector-search). If you don't have an Azure account, you can [create a free account](https://azure.microsoft.com/free/) to get started.
+Learn how to leverage the vector search capabilities of Azure Cosmos DB for MongoDB vCore from [this page](https://learn.microsoft.com/en-us/azure/documentdb/vector-search). If you don't have an Azure account, you can [create a free account](https://azure.microsoft.com/free/) to get started.
 
 ## Setup
 
@@ -62413,7 +63132,7 @@ See [this section for general instructions on installing LangChain packages](/os
 npm install @langchain/azure-cosmosdb @langchain/core
 ```
 
-You'll also need to have an Azure Cosmos DB for MongoDB vCore instance running. You can deploy a free version on Azure Portal without any cost, following [this guide](https://learn.microsoft.com/azure/cosmos-db/mongodb/vcore/quickstart-portal).
+You'll also need to have an Azure Cosmos DB for MongoDB vCore instance running. You can deploy a free version on Azure Portal without any cost, following [this guide](https://learn.microsoft.com/en-us/azure/documentdb/quickstart-portal).
 
 Once you have your instance running, make sure you have the connection string and the admin key. You can find them in the Azure Portal, under the "Connection strings" section of your instance. Then you need to set the following environment variables:
 
@@ -63728,7 +64447,7 @@ const embeddings = new GoogleGenerativeAIEmbeddings({
 ```
 
 </Accordion>
-<Accordion title="Google Vertex">
+<Accordion title="Gemini Enterprise Agent Platform">
 
 Install dependencies:
 
@@ -81870,7 +82589,7 @@ LangChain supports embeddings from [many providers](/oss/javascript/integrations
     ```
     </Tab>
 
-    <Tab title="VertexAI">
+    <Tab title="Gemini Enterprise Agent Platform">
     <CodeGroup>
     ```bash npm
     npm i @langchain/google-vertexai
@@ -82576,6 +83295,10 @@ npm install @langchain/langgraph-checkpoint-postgres
 
     </Tab>
 </Tabs>
+
+<Note>
+    For other store backends, including Redis and MongoDB, see the [store integrations](/oss/javascript/integrations/long-term-memory) list. For a MongoDB walkthrough, see [long-term memory with MongoDB](/oss/javascript/integrations/memory/mongodb-long-term-memory).
+</Note>
 
 Tools can then read from and write to the store using the `runtime.store` parameter. See [Read long-term memory in tools](#read-long-term-memory-in-tools) and [Write long-term memory from tools](#write-long-term-memory-from-tools) for examples.
 
@@ -84193,6 +84916,66 @@ For more information about the memory store, see the [Persistence](/oss/javascri
 </div>
 
 
+# Authentication
+Source: https://docs.langchain.com/oss/javascript/langchain/mcp/auth
+
+---
+
+<div className="source-links">
+<Callout icon="terminal-2">
+    [Connect these docs](/use-these-docs) to Claude, VSCode, and more via MCP for real-time answers.
+</Callout>
+<Callout icon="edit">
+    [Edit this page on GitHub](https://github.com/langchain-ai/docs/edit/main/src/oss/langchain/mcp/auth.mdx) or [file an issue](https://github.com/langchain-ai/docs/issues/new/choose).
+</Callout>
+</div>
+
+
+# Connections
+Source: https://docs.langchain.com/oss/javascript/langchain/mcp/connections
+
+---
+
+<div className="source-links">
+<Callout icon="terminal-2">
+    [Connect these docs](/use-these-docs) to Claude, VSCode, and more via MCP for real-time answers.
+</Callout>
+<Callout icon="edit">
+    [Edit this page on GitHub](https://github.com/langchain-ai/docs/edit/main/src/oss/langchain/mcp/connections.mdx) or [file an issue](https://github.com/langchain-ai/docs/issues/new/choose).
+</Callout>
+</div>
+
+
+# Model Context Protocol (MCP)
+Source: https://docs.langchain.com/oss/javascript/langchain/mcp/index
+
+---
+
+<div className="source-links">
+<Callout icon="terminal-2">
+    [Connect these docs](/use-these-docs) to Claude, VSCode, and more via MCP for real-time answers.
+</Callout>
+<Callout icon="edit">
+    [Edit this page on GitHub](https://github.com/langchain-ai/docs/edit/main/src/oss/langchain/mcp/index.mdx) or [file an issue](https://github.com/langchain-ai/docs/issues/new/choose).
+</Callout>
+</div>
+
+
+# Tools
+Source: https://docs.langchain.com/oss/javascript/langchain/mcp/tools
+
+---
+
+<div className="source-links">
+<Callout icon="terminal-2">
+    [Connect these docs](/use-these-docs) to Claude, VSCode, and more via MCP for real-time answers.
+</Callout>
+<Callout icon="edit">
+    [Edit this page on GitHub](https://github.com/langchain-ai/docs/edit/main/src/oss/langchain/mcp/tools.mdx) or [file an issue](https://github.com/langchain-ai/docs/issues/new/choose).
+</Callout>
+</div>
+
+
 # Model Context Protocol (MCP)
 Source: https://docs.langchain.com/oss/javascript/langchain/mcp
 
@@ -84250,7 +85033,7 @@ const client = new MultiServerMCPClient({  // [!code highlight]
 
 const tools = await client.getTools();  // [!code highlight]
 const agent = createAgent({
-    model: "claude-sonnet-4-6",
+    model: "claude-sonnet-5",
     tools,  // [!code highlight]
 });
 
@@ -84265,7 +85048,7 @@ const weatherResponse = await agent.invoke({
 
 
 <Tip>
-Trace MCP tool calls alongside your agent's reasoning steps with [LangSmith](https://smith.langchain.com?utm_source=docs&utm_medium=cta&utm_campaign=langsmith-signup&utm_content=oss-langchain-mcp). Follow the [tracing quickstart](/langsmith/trace-with-langchain) to get set up.
+Trace MCP tool calls alongside your agent's reasoning steps with [LangSmith](https://smith.langchain.com?utm_source=docs&utm_medium=cta&utm_campaign=langsmith-signup&utm_content=oss-javascript-langchain-mcp). Follow the [tracing quickstart](/langsmith/trace-with-langchain) to get set up.
 </Tip>
 
 ## Custom servers
@@ -84556,7 +85339,7 @@ import { createAgent } from "langchain";
 
 const client = new MultiServerMCPClient({...});
 const tools = await client.getTools();  // [!code highlight]
-const agent = createAgent({ model: "claude-sonnet-4-6", tools });
+const agent = createAgent({ model: "claude-sonnet-5", tools });
 ```
 
 When an MCP tool execution fails (`CallToolResult` with `isError: true`), `@langchain/mcp-adapters` raises a `ToolException`. Wrap tool calls in a try/catch to handle these errors. Unlike the Python adapter, the TypeScript adapter does not return the error to the model as a failed tool message.
@@ -84652,7 +85435,7 @@ MCP tools can return [multimodal content](https://modelcontextprotocol.io/specif
       const { MultiServerMCPClient } = await import("@langchain/mcp-adapters");
       const client = new MultiServerMCPClient({});
       const tools = await client.getTools();
-      const agent = createAgent({ model: "anthropic:claude-sonnet-4-6", tools });
+      const agent = createAgent({ model: "anthropic:claude-sonnet-5", tools });
     
       const result = await agent.invoke({
         messages: [
@@ -84856,7 +85639,7 @@ This allows you to handle multimodal tool responses in a provider-agnostic way, 
     [Connect these docs](/use-these-docs) to Claude, VSCode, and more via MCP for real-time answers.
 </Callout>
 <Callout icon="edit">
-    [Edit this page on GitHub](https://github.com/langchain-ai/docs/edit/main/src/oss/langchain/mcp.mdx) or [file an issue](https://github.com/langchain-ai/docs/issues/new/choose).
+    [Edit this page on GitHub](https://github.com/langchain-ai/docs/edit/main/src/oss/javascript/langchain/mcp.mdx) or [file an issue](https://github.com/langchain-ai/docs/issues/new/choose).
 </Callout>
 </div>
 
@@ -89987,7 +90770,7 @@ const dynamicModelSelection = createMiddleware({
 
 const agent = createAgent({
   model: "gpt-5.4-mini", // Base model (used when messageCount ≤ 10)
-  tools,
+  tools: [],
   middleware: [dynamicModelSelection],
 });
 ```
@@ -97271,16 +98054,96 @@ Source: https://docs.langchain.com/oss/javascript/langchain/quickstart
 
 This quickstart shows you how to create a fully functional AI agent in just a few minutes.
 
+
+<Prompt
+    description="Build the LangChain quickstart agent"
+    icon="sparkles"
+    actions={["copy", "cursor"]}
+>
+Build a basic LangChain agent in this working directory by following the LangChain quickstart.
+
+## Step 1: Read the guide
+
+Detect whether this project uses Python or TypeScript/JavaScript. Fetch and follow the matching page; treat it as the source of truth for package names, model strings, and code:
+
+- Python: https://docs.langchain.com/oss/python/langchain/quickstart.md
+- TypeScript: https://docs.langchain.com/oss/javascript/langchain/quickstart.md
+
+## Step 2: Install dependencies
+
+Install the packages from the guide with the package manager already used in this project (`uv`, `pip`, `npm`, `pnpm`, `yarn`, or `bun`). Prefer pinning current stable versions over a floating `latest` tag when the project already pins versions.
+
+## Step 3: Configure model credentials
+
+Check whether a supported provider API key is already set (for example `OPENAI_API_KEY`, `GOOGLE_API_KEY`, or `ANTHROPIC_API_KEY`). If none is set, ask the user which provider to use, then stop and wait while they create a key and set it in the shell or a `.env` file. Do not invent, hardcode, or commit API keys.
+
+## Step 4: Implement the basic agent
+
+Create the "Build a basic agent" example from the guide: `create_agent`, a simple tool such as `get_weather`, a short system prompt, and an `invoke` call. Use a model string for the provider the user chose. Print the final message content (Python: `.content_blocks`) so the user can verify the run.
+
+## Step 5: Optional LangSmith tracing
+
+Ask the user if they want tracing. If yes, ask them to set `LANGSMITH_TRACING=true` and `LANGSMITH_API_KEY` themselves, then re-run. Do not invent a LangSmith key.
+
+## Rules
+
+- Stay scoped to this quickstart. Do not add unrelated frameworks, evals, or production deployment.
+- Prefer `create_agent` from `langchain.agents` / `langchain` as shown in the guide.
+- Ask rather than guess when a secret, provider choice, or project convention is unclear.
+</Prompt>
+
 <Tip>
     **Using an AI coding assistant?**
 
-    - Install the [LangChain Docs MCP server](/use-these-docs) to give your agent access to up-to-date LangChain documentation and examples.
+    - Install the [LangChain Docs MCP servers](/use-these-docs) to give your agent access to up-to-date LangChain documentation and examples.
+
+      <Prompt
+    description="Connect LangChain docs MCP servers"
+    icon="plug"
+    actions={["copy", "cursor"]}
+>
+Connect both LangChain documentation MCP servers to my coding agent so it can look up current LangChain, LangGraph, and LangSmith docs and API reference.
+
+Servers to add:
+
+- `docs-langchain`: https://docs.langchain.com/mcp
+- `reference-langchain`: https://reference.langchain.com/mcp
+
+Detect which agent or editor I am using (Claude Code, Cursor, Codex CLI, Claude Desktop, Deep Agents Code, VS Code, Antigravity, or another MCP-compatible client). Use the matching setup from https://docs.langchain.com/use-these-docs.md:
+
+- Claude Code: `claude mcp add --transport http` for each server (project scope by default; use `--scope user` only if I ask for global access).
+- Codex CLI: `codex mcp add` with each server URL.
+- Cursor, Deep Agents Code, VS Code, or Antigravity: merge both entries into the MCP settings JSON using the field names shown on that page for my client.
+- Claude Desktop: add both URLs under Settings > Connectors.
+
+Do not invent alternate MCP URLs. After configuring, confirm both servers are listed and reachable.
+</Prompt>
     - Install [LangChain Skills](https://github.com/langchain-ai/langchain-skills) to improve your agent's performance on LangChain ecosystem tasks.
+
+      <Prompt
+    description="Install LangChain Skills"
+    icon="puzzle"
+    actions={["copy", "cursor"]}
+>
+Install LangChain Skills for my coding agent so it can perform better on LangChain, LangGraph, and Deep Agents tasks.
+
+Use the Agent Skills installer from https://github.com/langchain-ai/langchain-skills:
+
+```bash
+npx skills add langchain-ai/langchain-skills --skill '*' --yes
+```
+
+If I ask for a global install instead, use:
+
+```bash
+npx skills add langchain-ai/langchain-skills --skill '*' --yes --global
+```
+
+Detect which agent or editor I am using. If I use Claude Code and prefer the plugin path, follow the marketplace install from that repository README (`/plugin marketplace add` then `/plugin install`). Do not invent alternate skill package names or install URLs. After installing, confirm the skills are available to the agent.
+</Prompt>
 </Tip>
 
 ## Install dependencies
-
-
 
 Install the following packages to follow along:
 
@@ -103998,6 +104861,10 @@ The [`BaseStore`](https://reference.langchain.com/javascript/langchain-core/stor
 
 Access the store through `config.store`. The store uses a namespace/key pattern to organize data:
 
+<Tip>
+    For production deployments, use a persistent store implementation like [`PostgresStore`](https://reference.langchain.com/javascript/langchain-langgraph-checkpoint-postgres/store/PostgresStore), `MongoDBStore`, or `RedisStore` instead of `InMemoryStore`. See the [memory documentation](/oss/javascript/langgraph/add-memory) for setup details.
+</Tip>
+
 ```ts expandable
 import * as z from "zod";
 import { createAgent, tool } from "langchain";
@@ -104288,7 +105155,9 @@ Behavior:
 - Use `message.content_blocks` to read the normalized block list after the tool runs.
 - The model must support the modalities you return. Check your [model's capabilities](/oss/javascript/integrations/chat) before returning images, audio, or video.
 
-For block types and provider-specific requirements, see [Multimodal messages](/oss/javascript/langchain/messages#multimodal). MCP tools that return images or mixed content are converted the same way; see [Multimodal tool content](/oss/javascript/langchain/mcp#multimodal-tool-content).
+For block types and provider-specific requirements, see [Multimodal messages](/oss/javascript/langchain/messages#multimodal).
+
+
 
 #### Return a Command
 
@@ -105075,6 +105944,17 @@ LangChain provides a large collection of prebuilt tools and toolkits for common 
 
 See the [tools and toolkits](/oss/javascript/integrations/tools) integration page for a complete list of available tools organized by category.
 
+## Tools from MCP servers
+
+[Model Context Protocol (MCP)](https://modelcontextprotocol.io) is an open protocol that standardizes how applications expose tools to language models. Rather than hand-authoring a tool, you connect to an MCP server and adapt the tools it advertises into LangChain tools, ready to pass to an agent like any other tool.
+
+
+
+LangChain agents call tools defined on MCP servers through the [`@langchain/mcp-adapters`](https://github.com/langchain-ai/langchainjs/tree/main/libs/langchain-mcp-adapters) library, which discovers a server's tools and adapts them into LangChain tools.
+
+For setup, transports, and authentication, see [Model Context Protocol (MCP)](/oss/javascript/langchain/mcp).
+
+
 ## Server-side tool use
 
 Some chat models feature built-in tools that are executed server-side by the model provider. These include capabilities like web search and code interpreters that don't require you to define or host the tool logic.
@@ -105839,7 +106719,7 @@ In production, use a checkpointer backed by a database:
 
   <Tip>
   **Setup**
-  To use `MongoDBSaver`, you will need a MongoDB cluster. Follow [this guide](https://www.mongodb.com/docs/guides/atlas/cluster/) to create a cluster if you don't already have one.
+  To use `MongoDBSaver`, you will need a MongoDB cluster. Follow [this guide](https://www.mongodb.com/docs/guides/atlas/cluster/) to create a cluster if you don't already have one. For an agent-focused walkthrough, see [short-term memory with MongoDB Atlas](/oss/javascript/integrations/memory/mongodb-short-term-memory).
   </Tip>
 
   ```typescript
@@ -106107,6 +106987,10 @@ In production, use a store backed by a database:
   ```
   npm install @langchain/langgraph-checkpoint-mongodb
   ```
+
+  <Tip>
+  For an agent-focused walkthrough, see [long-term memory with MongoDB Atlas](/oss/javascript/integrations/memory/mongodb-long-term-memory).
+  </Tip>
 
   ```typescript
   import { ChatAnthropic } from "@langchain/anthropic";
@@ -116180,11 +117064,90 @@ Source: https://docs.langchain.com/oss/javascript/langgraph/quickstart
 
 This quickstart demonstrates how to build a calculator agent using the LangGraph Graph API or the Functional API.
 
+<Prompt
+    description="Build the LangGraph calculator quickstart"
+    icon="sparkles"
+    actions={["copy", "cursor"]}
+>
+Build a LangGraph calculator agent in this working directory by following the LangGraph quickstart.
+
+## Step 1: Read the guide
+
+Detect whether this project uses Python or TypeScript/JavaScript. Fetch and follow the matching page; treat it as the source of truth for package names, model strings, and code:
+
+- Python: https://docs.langchain.com/oss/python/langgraph/quickstart.md
+- TypeScript: https://docs.langchain.com/oss/javascript/langgraph/quickstart.md
+
+Ask the user whether to use the Graph API or the Functional API. If they have no preference, use the Graph API path.
+
+## Step 2: Install dependencies
+
+Install the packages required by the chosen path with the package manager already used in this project.
+
+## Step 3: Configure model credentials
+
+This quickstart uses Anthropic by default. Check whether `ANTHROPIC_API_KEY` is set. If it is not, ask the user to create a key and set it in the shell or a `.env` file, then stop and wait for confirmation. Do not invent, hardcode, or commit API keys. If the user prefers another chat model provider from the integrations docs, adapt the example accordingly after confirming.
+
+## Step 4: Implement the calculator agent
+
+Implement the selected quickstart path end to end: tools for add, multiply, and divide; the agent graph or functional workflow; and a sample invocation that exercises tool calling. Print the final result so the user can verify the run.
+
+## Rules
+
+- Stay scoped to this quickstart. Do not add deployment, evals, or unrelated frameworks unless the user asks.
+- Prefer the APIs and structure shown on the fetched guide over inventing a different agent pattern.
+- Ask rather than guess when a secret, API choice, or project convention is unclear.
+</Prompt>
+
 <Tip>
     **Using an AI coding assistant?**
 
-    - Install the [LangChain Docs MCP server](/use-these-docs) to give your agent access to up-to-date LangChain documentation and examples.
+    - Install the [LangChain Docs MCP servers](/use-these-docs) to give your agent access to up-to-date LangChain documentation and examples.
+
+      <Prompt
+    description="Connect LangChain docs MCP servers"
+    icon="plug"
+    actions={["copy", "cursor"]}
+>
+Connect both LangChain documentation MCP servers to my coding agent so it can look up current LangChain, LangGraph, and LangSmith docs and API reference.
+
+Servers to add:
+
+- `docs-langchain`: https://docs.langchain.com/mcp
+- `reference-langchain`: https://reference.langchain.com/mcp
+
+Detect which agent or editor I am using (Claude Code, Cursor, Codex CLI, Claude Desktop, Deep Agents Code, VS Code, Antigravity, or another MCP-compatible client). Use the matching setup from https://docs.langchain.com/use-these-docs.md:
+
+- Claude Code: `claude mcp add --transport http` for each server (project scope by default; use `--scope user` only if I ask for global access).
+- Codex CLI: `codex mcp add` with each server URL.
+- Cursor, Deep Agents Code, VS Code, or Antigravity: merge both entries into the MCP settings JSON using the field names shown on that page for my client.
+- Claude Desktop: add both URLs under Settings > Connectors.
+
+Do not invent alternate MCP URLs. After configuring, confirm both servers are listed and reachable.
+</Prompt>
     - Install [LangChain Skills](https://github.com/langchain-ai/langchain-skills) to improve your agent's performance on LangChain ecosystem tasks.
+
+      <Prompt
+    description="Install LangChain Skills"
+    icon="puzzle"
+    actions={["copy", "cursor"]}
+>
+Install LangChain Skills for my coding agent so it can perform better on LangChain, LangGraph, and Deep Agents tasks.
+
+Use the Agent Skills installer from https://github.com/langchain-ai/langchain-skills:
+
+```bash
+npx skills add langchain-ai/langchain-skills --skill '*' --yes
+```
+
+If I ask for a global install instead, use:
+
+```bash
+npx skills add langchain-ai/langchain-skills --skill '*' --yes --global
+```
+
+Detect which agent or editor I am using. If I use Claude Code and prefer the plugin path, follow the marketplace install from that repository README (`/plugin marketplace add` then `/plugin install`). Do not invent alternate skill package names or install URLs. After installing, confirm the skills are available to the agent.
+</Prompt>
 </Tip>
 
 - [Use the Graph API](#use-the-graph-api) if you prefer to define your agent as a graph of nodes and edges.
@@ -117766,7 +118729,9 @@ When using the [Agent Server](/langsmith/agent-server), you do not need to imple
 [InMemoryStore](https://reference.langchain.com/javascript/langchain-core/stores/InMemoryStore) is suitable for development and testing. For production, use a persistent store like `PostgresStore`, `MongoDBStore`, `RedisStore`, or `UpstashStore`. All implementations extend [BaseStore](https://reference.langchain.com/javascript/langchain-core/stores/BaseStore), which is the type annotation to use in node function signatures.
 </Note>
 
-
+<Note>
+See [store integrations](/oss/javascript/integrations/long-term-memory/index) for the full list of available providers.
+</Note>
 
 ## Basic usage
 
@@ -122656,7 +123621,7 @@ Importantly, updates from a parallel superstep may not be ordered consistently. 
   If you have error-prone (perhaps want to handle flakey API calls), LangGraph provides two ways to address this:
 
   1. You can write regular python code within your node to catch and handle exceptions.
-  2. You can set a **[retry_policy](https://langchain-ai.github.io/langgraph/reference/types/#langgraph.types.RetryPolicy)** to direct the graph to retry nodes that raise certain types of exceptions. Only failing branches are retried, so you needn't worry about performing redundant work.
+  2. You can set a **[`RetryPolicy`](https://reference.langchain.com/python/langgraph/types/#langgraph.types.RetryPolicy)** to direct the graph to retry nodes that raise certain types of exceptions. Only failing branches are retried, so you needn't worry about performing redundant work.
 
   Together, these let you perform parallel execution and fully control exception handling.
 </Accordion>
@@ -123250,7 +124215,7 @@ If you are using tools that update state via [`Command`](https://reference.langc
 
 Here we demonstrate how to visualize the graphs you create.
 
-You can visualize any arbitrary [Graph](https://langchain-ai.github.io/langgraph/reference/graphs/), including [StateGraph](https://langchain-ai.github.io/langgraph/reference/graphs/#langgraph.graph.state.StateGraph).
+You can visualize any arbitrary [Graph](https://reference.langchain.com/python/langgraph/graphs/), including [`StateGraph`](https://reference.langchain.com/javascript/langchain-langgraph/index/StateGraph).
 
 
 
@@ -125896,6 +126861,26 @@ These guides explain the core concepts and APIs underlying LangChain and LangGra
 # LangChain v1 migration guide
 Source: https://docs.langchain.com/oss/javascript/migrate/langchain-v1
 
+<Prompt
+    description="Migrate a codebase to LangChain v1."
+    icon="arrow-right"
+    actions={["copy"]}
+>
+Migrate this codebase to LangChain v1 (requires `langchain` and `@langchain/core` at v1, and Node.js 22+).
+
+Key changes:
+
+1. **`createReactAgent` → `createAgent`**: replace `import { createReactAgent } from "@langchain/langgraph/prebuilts"` with `import { createAgent } from "langchain"`. Rename `prompt` to `systemPrompt`.
+2. **Hooks become middleware**: replace `preModelHook` / `postModelHook` customization with middleware using `beforeModel`, `afterModel`, and `wrapToolCall`. For human-in-the-loop tool approval, use `humanInTheLoopMiddleware({ interruptOn: {...} })` from `langchain`.
+3. **Structured output**: keep `responseFormat`, but use `toolStrategy` / `providerStrategy`. Prompted output is removed.
+4. **Streaming node name**: when filtering or matching streamed events by node name, rename `"agent"` to `"model"`.
+5. **Runtime context**: pass static context via the `context` property instead of only `config.configurable`.
+6. **Package namespace**: legacy chains, indexing, and community re-exports moved to `@langchain/classic`. Install `@langchain/classic` and update those imports.
+7. **Standard content blocks**: prefer `message.contentBlocks` for provider-agnostic content. Existing `message.content` remains valid.
+
+Search the codebase for `createReactAgent`, `@langchain/langgraph/prebuilts`, `preModelHook`, `postModelHook`, and legacy imports that should move to `@langchain/classic`, and apply the necessary changes. Flag anything that cannot be migrated automatically.
+</Prompt>
+
 This migration guide outlines the major changes in LangChain v1. To learn more about the new features of v1, see the [introductory post](/oss/javascript/releases/langchain-v1).
 
 To upgrade,
@@ -126686,6 +127671,25 @@ The following deprecated APIs have been removed in v1:
 
 # LangGraph v1 migration guide
 Source: https://docs.langchain.com/oss/javascript/migrate/langgraph-v1
+
+<Prompt
+    description="Migrate a codebase to LangGraph v1."
+    icon="arrow-right"
+    actions={["copy"]}
+>
+Migrate this codebase to LangGraph v1 (requires `@langchain/langgraph` and `@langchain/core` at v1, plus `langchain` at v1 when migrating from `createReactAgent`, and Node.js 22+).
+
+Key changes:
+
+1. **Upgrade packages**: install `@langchain/langgraph@latest` and `@langchain/core@latest`. If you use `createReactAgent`, also install `langchain@latest`.
+2. **`createReactAgent` → `createAgent`**: replace `import { createReactAgent } from "@langchain/langgraph/prebuilts"` with `import { createAgent } from "langchain"`. Rename `prompt` to `systemPrompt`.
+3. **Typed interrupts**: define interrupt types at graph construction via an `interrupts` config on `StateGraph`.
+4. **`toLangGraphEventStream` removed**: use `graph.stream` with an `encoding` option (for example `"text/event-stream"`) instead of `toLangGraphEventStream` / `toLangGraphEventStreamResponse`.
+5. **`useStream`**: supports custom transports.
+6. **Build outputs**: do not import from package `dist/` paths; use the public module exports.
+
+Search the codebase for `createReactAgent`, `toLangGraphEventStream`, `toLangGraphEventStreamResponse`, and `@langchain/langgraph/prebuilts`, and apply the necessary changes. Flag anything that cannot be migrated automatically.
+</Prompt>
 
 This guide outlines changes in LangGraph v1 and how to migrate from previous versions. For a high-level overview of what's new, see the [release notes](/oss/javascript/releases/langgraph-v1).
 
