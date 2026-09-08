@@ -1,0 +1,232 @@
+{
+  "schemaVersion": 1,
+  "pageVersion": "sha256:2aac061d955c1ec055e9de6f35ccaa164adeeb2c92ce26976d2521db2a6b32c1",
+  "claims": [
+    {
+      "id": "claim_74ecc17211a34f8e8bd82cecee5ca069",
+      "statement": "The test suite uses pytest with socket isolation enabled via --disable-socket flag to prevent network calls, configured with verbose output mode and automatic asyncio fixture scope detection.",
+      "evidence": [
+        {
+          "resource": "repo://Makefile#L80-L80",
+          "version": "repo-lines-v1:sha256:fb37ecbd4aae916041f85735d720ab5f4246fb1eb8ba7d28fa24a7be4791b0f4:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZmIzN2VjYmQ0YWFlOTE2MDQxZjg1NzM1ZDcyMGFiNWY0MjQ2ZmIxZWI4YmE3ZDI4ZmEyNGE3YmU0NzkxYjBmNCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiZmIzN2VjYmQ0YWFlOTE2MDQxZjg1NzM1ZDcyMGFiNWY0MjQ2ZmIxZWI4YmE3ZDI4ZmEyNGE3YmU0NzkxYjBmNCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiY2YzNWZiZTM2MWNmMjMxOTI3MTNkYjEwODk1MjIwMGI5YmNmMWFlZTA5ZDc2NTQxNGNjMWM2ZTVjZDc2MjRhMSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZWU5YWJiOWEzZWRhMzRhNDIyYzZlYjVhMzA2ZDVkYzcwMGVlNmQ3YzQ4ODg5NmQ1ZjE5MzZkNWZiNDU5NjI5OCJ9"
+        },
+        {
+          "resource": "repo://pyproject.toml#L75-L88",
+          "version": "repo-lines-v1:sha256:4d2b27b04af22e49d40b168bc55009c5a1884d4469e450d36cfb05b39ae50f11:eyJzZWxlY3RlZExpbmVDb3VudCI6MTQsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijg2NzZlNjQxNDY1YTY1NTFlOWU5Y2ZmZDdmYWExZTZhNDJmOWI3MjQ4MDk4MTNjOTAzZDdlZGNiNTJmMzAwNmYiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjI2OTE5OGEyYWQ1ZWQ5ODA1NjkxNjE0OWE3YmRjOGI4NTg1MDVlN2UyM2MwN2Q4ZDkwNGU4OGNiMGYxNTUyYmUiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImQzZDE3MWRlNzU0MzFhMDIxYTBkOTRmYTc2ZmFiZjBkNzEzOWM4OThjMWEwYjQ0YjQzY2E2MDkwM2ZhMWI4NDUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjNlNDgwZjVhOWE2OTc0NmIwYzdjY2QxYjIyYzFmMDU5M2M5ZWZmOGI0MTQ1YTMwYmZlY2MwOWQ2MWYxZDcxNjUifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_44765ab02e9148ae80974e2bd1d8459d",
+      "statement": "Builder tests (test_builder.py) validate the DocumentationBuilder class responsible for copying and processing source documentation files to build directory, including file extension filtering, directory structure preservation, versioned Python/JavaScript builds, and file preprocessing.",
+      "evidence": [
+        {
+          "resource": "repo://tests/unit_tests/test_builder.py#L1-L80",
+          "version": "repo-lines-v1:sha256:3c36ffbd58cd9ceba124095fca3ace810eac12ff888e39792cd444066679b22c:eyJzZWxlY3RlZExpbmVDb3VudCI6ODAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImMxMWU0MTMxZjlhZmQzYTE3MzkzZTEyMGQ2MDgxZGI4ZDllOGIxMjY2ODk5ODYzODFlYzFiODFjYzc4NGFiOWYiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjIwMmQwZTdlYTA4NjgyNTkxYWNhYmU4YzAxMDQyMzIwMGMwZTgwNWY3YzhkOTEwODg2NzZkZjZkMWFiNmExMzAiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjowLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImU0ODkxMjEwOTU4Y2JmZGJiMmY3Mzg0NDNjMWI2NjJjMjZhNDZkYWNmOTMwMjg3YzM3NWYyOWM3NTU3MmUxZDIifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_5d5c416dd3a744d28858c78b8c93b143",
+      "statement": "Parser tests (test_parser.py) validate markdown parsing into AST and output format conversion, covering headings, front matter, code blocks, admonitions/accordions, tabs/conditionals, and line number tracking.",
+      "evidence": [
+        {
+          "resource": "repo://tests/unit_tests/test_parser.py#L1-L150",
+          "version": "repo-lines-v1:sha256:599af2df790989efdeb54963e11cefb8af3586bc86acc95a484d034cd68b0d69:eyJzZWxlY3RlZExpbmVDb3VudCI6MTUwLCJmaXJzdFNlbGVjdGVkTGluZUhhc2giOiIyOWM1NDI1ZDFmMmZmMzY5MDc0YmExZDZmNzNjMDA5M2I1MDY5NTljNGU5MDk0YTlmNThkODI5YzFhMWY0MmMzIiwibGFzdFNlbGVjdGVkTGluZUhhc2giOiI0YTk3M2JhMWM4ZWVkZDgxYWI2ODBlOTM2NjNkYmYxMzBjODZiYjkyYWMzZmRmNTAyZDhkMzIwY2Y2OWYxNDc3IiwicHJlY2VkaW5nQ29udGV4dExpbmVDb3VudCI6MCwicHJlY2VkaW5nQ29udGV4dEhhc2giOiJlM2IwYzQ0Mjk4ZmMxYzE0OWFmYmY0Yzg5OTZmYjkyNDI3YWU0MWU0NjQ5YjkzNGNhNDk1OTkxYjc4NTJiODU1IiwiZm9sbG93aW5nQ29udGV4dExpbmVDb3VudCI6MywiZm9sbG93aW5nQ29udGV4dEhhc2giOiIwYTJiYTUwNTU0NGFmOTM1ODk5YzM5ODEzNmFkYmQwMzE4YTI0NzZhMDM4ZTViMjE4YTc0MWNiMDA4Yzc3MDU3In0"
+        }
+      ]
+    },
+    {
+      "id": "claim_32bda94f61a84c0c873a5348a6c84cad",
+      "statement": "Autolinks tests (test_handle_auto_links.py) validate the preprocessor that transforms @[Reference] syntax into markdown links while protecting code blocks and respecting language-scoped resolution.",
+      "evidence": [
+        {
+          "resource": "repo://tests/unit_tests/test_handle_auto_links.py#L1-L150",
+          "version": "repo-lines-v1:sha256:8d64c54f3d525844d9cdf8ebc784858d33ac90028d6f4f6e305fc05055b0466a:eyJzZWxlY3RlZExpbmVDb3VudCI6MTUwLCJmaXJzdFNlbGVjdGVkTGluZUhhc2giOiIyN2IwZGNjMThlYTRhZDhjMTIwMDhmY2Y0Y2I0ZTAyNDM5YzIxMThkMzFmZTQwZWY2MzlmODVkZWE2OGU1ZGQ5IiwibGFzdFNlbGVjdGVkTGluZUhhc2giOiI1MWNlNTI5MWE2ZDQ3MzE1MTc2MmU3YmFmZTc3NWU4ODFhODk5ZTg4ZjFiMGJhYTgyOGExZjU4Yzk0YjNlZTc5IiwicHJlY2VkaW5nQ29udGV4dExpbmVDb3VudCI6MCwicHJlY2VkaW5nQ29udGV4dEhhc2giOiJlM2IwYzQ0Mjk4ZmMxYzE0OWFmYmY0Yzg5OTZmYjkyNDI3YWU0MWU0NjQ5YjkzNGNhNDk1OTkxYjc4NTJiODU1IiwiZm9sbG93aW5nQ29udGV4dExpbmVDb3VudCI6MywiZm9sbG93aW5nQ29udGV4dEhhc2giOiI1ODAyMTliNzI5ODJkZmVjMTc2ZmM0NDJkZDJkMDdmNjhiZDk4NzVlNTQ5OWJkZjIwMTc4ZWFiNjY5MTMwZDQ5In0"
+        }
+      ]
+    },
+    {
+      "id": "claim_45a3331318c540a4b108abeddf4f4db1",
+      "statement": "Watcher tests (test_watcher.py) validate the DocsFileHandler class filtering logic for backup files (~ suffix), temporary files (.bak, .orig, .swp, .tmp), and proper recognition of valid documentation files.",
+      "evidence": [
+        {
+          "resource": "repo://tests/unit_tests/test_watcher.py#L1-L129",
+          "version": "repo-lines-v1:sha256:58c553f6f8b99858787e57e3f93ebc1e26d6ff6b294ccac13ff8caed0c54760b:eyJzZWxlY3RlZExpbmVDb3VudCI6MTI5LCJmaXJzdFNlbGVjdGVkTGluZUhhc2giOiJlMjM2NzMxOTM4OWUyY2YwM2ZlZmMyZWY1YzZhMTMyNDhkN2MxZWE5NDAxYTgxYWU3NzNjYzU1ZDJlMmE5YjkyIiwibGFzdFNlbGVjdGVkTGluZUhhc2giOiI1NTAzMmU5NjRkMDkzMjM1MWU1ZDE4NTI2OTI4MWIxNzFhM2EwOWIwOGIyODZlNjYxZWE0NzAzMjNjODJlYjRkIiwicHJlY2VkaW5nQ29udGV4dExpbmVDb3VudCI6MCwicHJlY2VkaW5nQ29udGV4dEhhc2giOiJlM2IwYzQ0Mjk4ZmMxYzE0OWFmYmY0Yzg5OTZmYjkyNDI3YWU0MWU0NjQ5YjkzNGNhNDk1OTkxYjc4NTJiODU1IiwiZm9sbG93aW5nQ29udGV4dExpbmVDb3VudCI6MCwiZm9sbG93aW5nQ29udGV4dEhhc2giOiJlM2IwYzQ0Mjk4ZmMxYzE0OWFmYmY0Yzg5OTZmYjkyNDI3YWU0MWU0NjQ5YjkzNGNhNDk1OTkxYjc4NTJiODU1In0"
+        }
+      ]
+    },
+    {
+      "id": "claim_e5e321615a3d4456a0efe3f91d3783d2",
+      "statement": "Cross-reference tests (test_check_cross_refs.py) validate that @[ref] syntax resolves to known identifiers with scope-based resolution (Python, JavaScript, shared) while protecting code blocks and escaped references.",
+      "evidence": [
+        {
+          "resource": "repo://tests/unit_tests/test_check_cross_refs.py#L1-L99",
+          "version": "repo-lines-v1:sha256:b90f54309b1a43579d071557d1b8dd121e827da1d817bbea3ee732f59cdefc33:eyJzZWxlY3RlZExpbmVDb3VudCI6OTksImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjMxMTc5MzQzNDJkNjQ5OWE3MmRhZjIwMjIyMTUwYWZiMDAyZjA0Mjc4NzU1MGFmMTU5OTIwZjVmZDFkOTJhYzQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAxYmE0NzE5YzgwYjZmZTkxMWIwOTFhN2MwNTEyNGI2NGVlZWNlOTY0ZTA5YzA1OGVmOGY5ODA1ZGFjYTU0NmIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjowLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjBmODZhYWU4OTVjZTgzNzJmNjA4N2NlNzY4ODJhNzIxNTRjZmZkZDE3N2NhMTgwZmNmMDQxNzU3MmE3NTJkOGIifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_24c4bb415dec48268c75eb77f71dbd45",
+      "statement": "GitHub Actions CI runs tests on every pull request and push to main with Python 3.13, 20-minute timeout, and concurrency control that cancels previous runs for the same PR/branch, failing if any test assertion fails or socket calls are attempted.",
+      "evidence": [
+        {
+          "resource": "repo://.github/workflows/_test.yml#L1-L51",
+          "version": "repo-lines-v1:sha256:0b4ddd8bfa072339c071c4ed2ac5a8ed08ee8c8ab5b7464213551eabf59e9433:eyJzZWxlY3RlZExpbmVDb3VudCI6NTEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImI0Yjc4NWVlNTE5Y2ViNmEyODRmOTljMWVjM2I3ODc0ZTc1YThhYTg2MzBiNzUxNmNiN2VhMWU0OWRiOTkwODciLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjBlODlmZjMxYTFlMjIzNjJiYzJmMWU2M2M2NzhjYjZhNmRiMTQyMDY1ODA4NzMyMjc0MzU4ZjM2ZGVkOGI1M2EiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjowLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjowLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUifQ"
+        },
+        {
+          "resource": "repo://.github/workflows/ci.yml#L1-L50",
+          "version": "repo-lines-v1:sha256:eea9d58fc11bd9dd56f0bff5a86759789fe9e8b8660268b8833e83835daeb619:eyJzZWxlY3RlZExpbmVDb3VudCI6NTAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImY1MmQ3MTExMDNkNTBhNDM3ODMwYzZmYmNkMDRmYjRiYWI0OWEwZjgyZjZkMjZkMWM3OTFjNmU4NDg4ZGQwOTAiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjhmYWE4OGI4MmEwYjlhMTcxOGZmNzQ0NGFlNjFmMzRjODliODM3YTg5MzEzMmMwOWQyMDI1ZTlkNGRjOGViMjYiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjowLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImY3N2IxMmVlNGVkMDM3NTkyMjA4ZGExNjYzMzBiMWU3YjI0NWUxNzUwNDFjYzczYzA1ZmNiZGZjNWRmNzhiM2QifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_ec5bd727dc0b401a8232be1130928cdb",
+      "statement": "Local test execution runs via 'make test' which invokes 'uv run pytest --disable-socket --allow-unix-socket $(TEST_FILE) -vv' where TEST_FILE defaults to tests/unit_tests.",
+      "evidence": [
+        {
+          "resource": "repo://Makefile#L23-L80",
+          "version": "repo-lines-v1:sha256:5272ee854e01c6598e9d6e4983061f2c56df610760fe55caf631e39a163bdfed:eyJzZWxlY3RlZExpbmVDb3VudCI6NTgsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjA5ZjNhNzI0MWE2NmI3NjAwYjM2MzViZmQ3NzE4MGU4NDY2YTZkMzYxZDRjOGY1ZTg4ZmEzMWFlNTgyMTZkN2QiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImZiMzdlY2JkNGFhZTkxNjA0MWY4NTczNWQ3MjBhYjVmNDI0NmZiMWViOGJhN2QyOGZhMjRhN2JlNDc5MWIwZjQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjRlZWQ3MTk0ZjdkN2VlNTU1NjdiOWRjNmQ2NDkxZjJkNTQ0MzAxMDU1YzY2YTUyNGI2NGFmYTY2MTM0ZjBhOTYiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImVlOWFiYjlhM2VkYTM0YTQyMmM2ZWI1YTMwNmQ1ZGM3MDBlZTZkN2M0ODg4OTZkNWYxOTM2ZDVmYjQ1OTYyOTgifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_f525adca6b484d4da4846108f72a920d",
+      "statement": "The repository provides code linting with ruff format/check, ty, and codespell; Vale prose linting with LangChain, proselint, vale, and write-good styles; built-site link checks with Mintlify; executable code-sample checks; and source cross-reference validation.",
+      "evidence": [
+        {
+          "resource": "repo://.github/workflows/_check-links.yml#L92-L96",
+          "version": "repo-lines-v1:sha256:d4ddfee94d46114c6c3acea5ce4e1b9cf0c8b34bd6bf52a2b5a82e92ac7c7531:eyJzZWxlY3RlZExpbmVDb3VudCI6NSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiODM3NWVkMGZjMDdlMWRhMzE1M2M0ZDY5MDA3NjU5NGY4NTE0OGI3ZmVmYmRjOTMwNTgzMzM3MTFiMDFiZGFkNSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiZGMxZDk2YmM2ZWJjZjQ4YjdiOGNlZGI5YTEzNjBjMmQzMGQxM2ZkYWU5MTAwMmJmMTg0MjM0MGI2NDMyMzUwMCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiN2YwNTg1ZTNhMzZkMDQxNjFiMGFlNTMyMTUzZjBlNWZkYTA4NWMyYmRiMWY2NGZlYWVhMWY5N2Y0OWFmOWZkOCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjAsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZTNiMGM0NDI5OGZjMWMxNDlhZmJmNGM4OTk2ZmI5MjQyN2FlNDFlNDY0OWI5MzRjYTQ5NTk5MWI3ODUyYjg1NSJ9"
+        },
+        {
+          "resource": "repo://.vale.ini#L1-L56",
+          "version": "repo-lines-v1:sha256:493b49b8cb62e8e4a151bdda868e82c38f5d46825709e500b16d47331fa17bd7:eyJzZWxlY3RlZExpbmVDb3VudCI6NTYsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjNjMjA1YTMxMmRkNjBkMWUzODI5MjU1ZmMwMjU5MWE4NmUyOTVjYjExMjYzNDg1OTQ1ODE5ZjQyMDFhMWEyNDMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjdkZGFhZWU4YmE3M2ZjN2IwZGI0ODNiMGE5NmUxOGYzNzllZTlmNjhjYWU0MWUyYjU4ZjAwMzkwN2FjNjVhMzciLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjowLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjowLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUifQ"
+        },
+        {
+          "resource": "repo://Makefile#L29-L80",
+          "version": "repo-lines-v1:sha256:cae4499515b4f66b81208d4e6d98d03b8d8d5667abe351b28ca0cb87ec5342b4:eyJzZWxlY3RlZExpbmVDb3VudCI6NTIsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjhiMDk1ZDI5MjU2MTViZDUzOTBmOTRiNjQ1MzYzY2I0ODE1YzJjOTU2YWZmNDdlNWFjYTFkODg1MTg3YjIwODMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImZiMzdlY2JkNGFhZTkxNjA0MWY4NTczNWQ3MjBhYjVmNDI0NmZiMWViOGJhN2QyOGZhMjRhN2JlNDc5MWIwZjQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjA4YmNlZDM3YjM3YzhiODU0YTBjZWM5NTUzZDY0MTk3YjJiY2UzMjVlZmYwNTljNzQ5ZDE0NTYwOWFlMmFmZmUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImVlOWFiYjlhM2VkYTM0YTQyMmM2ZWI1YTMwNmQ1ZGM3MDBlZTZkN2M0ODg4OTZkNWYxOTM2ZDVmYjQ1OTYyOTgifQ"
+        },
+        {
+          "resource": "repo://Makefile#L98-L160",
+          "version": "repo-lines-v1:sha256:fa9f05b5098f7509ed252e73826049ac89f27a55c3a9edacb00e4f40a63dcb4e:eyJzZWxlY3RlZExpbmVDb3VudCI6NjMsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjZhNjRkMDAwYTRiY2E0YTVmOWU3YTI2ZmM5ZTVmOGUwYzE0NDhhOGVlYmIxZDhjODkzM2ZlNzQ1NmQ1OGM1YjYiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjI3NDE0NjRmNmUyYjFhMjdjNTQ5YTg3NWE2MGM0OGU1ZTRmNTRmZTMzZWZkNTI0MzNiNDAwZTkyMWU2NmVhZWEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjUxMWM1NjEyZmIzODM3ZTIyODUzOTY4Y2Y2ZDEzYWRjZjcwYmJjM2M0Y2RiNDY2ZGY2NGUzOGNiNmU2Yzc0MjgiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjkwYjc0YWZkYzRlMzI2MGYwNmUyNzBmNzAyNGU5YWQyZGFlNTJiMWVmNDkxNmExZDJjODE4MmU4MjFiNzRmMWQifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_40f35e7f170e403f9e3fe6daea8d71ae",
+      "statement": "The test suite provides a file_system context manager in tests/unit_tests/utils.py that creates temporary directories with src/ and build/ subdirectories for isolated test file system operations.",
+      "evidence": [
+        {
+          "resource": "repo://tests/unit_tests/utils.py#L81-L100",
+          "version": "repo-lines-v1:sha256:087047051350092b82c8b7c7388c0316eeff390bdd2ef6fe22462ea3611bbf92:eyJzZWxlY3RlZExpbmVDb3VudCI6MjAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjU2MWYzM2MxMzI1NjlhNzQ5NDZiMmZjZjU0NmNhM2M0NDI1ZGEwY2E1Y2Y2YjY4NmMyNjA5MGZhYTlkMTEyYjQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjYyOTg3NDQwOWNjZjZjNmZlYTg0YmIwYzJjMDU1N2MyNDg4Mjg5NGQzYTkyMjY2M2UxYjNkNmE3MzNmNmQzYWQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjVmZWQxN2Q5Yzk0YjIyYWYzMGQzNjAzOWRiZTljMDM0OWJiZDIzZjc0ZTE4OWRkOGJhYmQ5Y2E0NDIxM2QyYTMiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImZlZWMyNWYxNDBkZDc2YmFhZDJmODc0YjA4ZTNjNGVlNWJkMGJiNWFlNTQ4NmUyNWFlY2EwNzE4OWQ1MzQwMDcifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_8dc16dad07a848e8a7022adc806ec300",
+      "statement": "The cross-reference checker scans Markdown below src, skips code-sample snippets and node_modules, ignores fenced code and escaped references, and requires unfenced shared OSS references to resolve in every scope in which the page is built.",
+      "evidence": [
+        {
+          "resource": "repo://scripts/check_cross_refs.py#L1-L9",
+          "version": "repo-lines-v1:sha256:451ed4bc350ba3adca8954c4e89d6e29b809737d08ed0fa12ec8ce04fb8e799a:eyJzZWxlY3RlZExpbmVDb3VudCI6OSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZWIxZGVjYTU5NWExNGQ1MTkxNjFlNmViNjRmZGJhYjQ1YzBjY2I2ZDY5NjJhYTk0MDhjNjg4M2M0Yzg1ZGEzMyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiYTMwM2VjZGQ0YTRkMTBmMTljNzNmZDQyZmQxMjQzN2ZkMzM1NGE4MjY4MTYwNWRhNTI1NWE5N2EzOTA2OGRiYiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjAsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZTNiMGM0NDI5OGZjMWMxNDlhZmJmNGM4OTk2ZmI5MjQyN2FlNDFlNDY0OWI5MzRjYTQ5NTk5MWI3ODUyYjg1NSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMzU5YjFhNDI3NzY3OTNiZjcyMjZjZWM0ODIzNWNmNzBkZjU2YTdmMjc4MDE0ODEzNzQxY2VkYmZmMWExMDFjOCJ9"
+        },
+        {
+          "resource": "repo://scripts/check_cross_refs.py#L23-L37",
+          "version": "repo-lines-v1:sha256:eb346494582477e64612c58b5e73ac900069583dc1aba56b24e784ea1cd8998f:eyJzZWxlY3RlZExpbmVDb3VudCI6MTUsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjcwM2FjYWRiOTA0ZjA5ODFiNjYwM2E5MjI2ZGJmMTFlZjc2MjQ5NzRmMTM4MTFiNDllNjBmMmRmYmI2ZmRkZjciLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjNhM2Y0MWU2MTUxMzFmMDExY2U0YzQyZjY0MzU1ZTFhNmEyNTMwZDQzNjY4ODVjNTMzMGRkOTE0NjQ2OGQ0NjAiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImY2OWU4MjU1YTg2MjRiMDk5MTQ1N2E0OWNkNThiMTczOTliZTQ2MDdlMWIzM2ZlNGFjYzM1MzI2OTJjMTZkYmEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjA2OTc5MjI5ZDk1NWY1N2QyZDBmNzBlMTU2ZTFkMjNhMjQwYWI3MDk0NTM4YzJhNzZmMzBhODg3ZjQ3ZDRiY2IifQ"
+        },
+        {
+          "resource": "repo://scripts/check_cross_refs.py#L76-L113",
+          "version": "repo-lines-v1:sha256:5952f1f974fa312b58d4ce1f3445cf9d8db7f34d9a564dd7613bf3b33b145e77:eyJzZWxlY3RlZExpbmVDb3VudCI6MzgsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjU3ZTUyY2RlZDY1NGI4MDk3YmViNjc0MTJkMmJhOTUyODcwNzg3Y2FkZjFjNjQ0MTkxMWNkNmMwNTMwZDg0MWEiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijc2YWY3YzJhYzIyNzk2MGZjZDVjM2NjODgwZDViMDhjZmIzOTcxMTJkYTgxMGJmNzVjM2Y0ZWJhYTNhMzdlNWQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjFhMGQzYmM1YWQ2ZDljMjViNWY5YTZkOTQ0ZmI3YWY1MGQ2ZjI1MzgwYjI5OTBhNzU4OThhNTUwOGJkZmY0N2UiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImY4NzhlYjQyOTc4MDFjZTFlY2I0OGJmNmIxYzk3YTZmNDQ5ZTI4M2Y5ODQxYTUxZTJlMjNjMmQ0NjEyODY5NjEifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_8ce7aa3d7c3646a0ad396b6fb22a99da",
+      "statement": "The code-sample runner executes eligible Python, TypeScript, Java, Kotlin, Go, and shell files under src/code-samples; FILES selects an explicit subset, while an unset FILES runs all eligible files excluding __pycache__ and node_modules.",
+      "evidence": [
+        {
+          "resource": "repo://scripts/test_code_samples.py#L60-L147",
+          "version": "repo-lines-v1:sha256:aa65caefa397c6c232fce0c8cd61cbca675b2522ba2348d4a813404be05b7e74:eyJzZWxlY3RlZExpbmVDb3VudCI6ODgsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImRkZjY0ODQ4ZjM0MGIzYmRhMDFlYjAwMGM1MjI5N2E2MGViYjQ3MjlmZWZlZjUzZjJhYmNjZDFhMTEzOGRkMWYiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjMwYzFmMTg4ZjE0MmVkN2E4MjQ2ODBiMjA3MTcyYzU1MTliYzYxNGE0OGZkYTdjZjE2N2VkYjhkZGY3OTk1NmMiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjkyODNiNWRmYTgwMmY0Zjk4MWExMjE2MWY4ZDRiYzYxY2YxYTFiODlkMDVhNTMxN2Q2ZjU2N2MzOTRmYzM1ZDUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjU4Yzk0NmE2YWU5NzQ4MjM5MTNiYTcyMjg1MzM2MGY5MTY5N2IzMzllNTI0OTdiZmZkM2UyY2UwZDVlNjY1OWMifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_0f3ed30af5a24243a2db625b301959e8",
+      "statement": "Each executable sample has a 600-second timeout and runs with language-specific commands and working directories: uv Python, npx tsx, Go, bash, or JBang using Java 21 for Java and Kotlin.",
+      "evidence": [
+        {
+          "resource": "repo://scripts/test_code_samples.py#L150-L264",
+          "version": "repo-lines-v1:sha256:89a38d85117c2534bbd0e481f3582f6647c6a70dc4af167821ed7b76925c1f53:eyJzZWxlY3RlZExpbmVDb3VudCI6MTE1LCJmaXJzdFNlbGVjdGVkTGluZUhhc2giOiIyZDM5NzRkZGFlOGRlM2EyNzJhYzIwY2RmOTNjYmNjNjZmNDgwMmI0MTk3MTE0ZGYyMzRmMDE3MzY4NjNhM2Q3IiwibGFzdFNlbGVjdGVkTGluZUhhc2giOiI3YTUyY2EzMzRjMTJmYTIzYWY3OWU4NDY3M2NhMGIxNDFjOWExMDBlZWQwODlkNDA5OTIxNTE5ZWRiZTEzOGZjIiwicHJlY2VkaW5nQ29udGV4dExpbmVDb3VudCI6MywicHJlY2VkaW5nQ29udGV4dEhhc2giOiI4Y2M0YTdkMWNjNzk2YWJhM2U0NjcyMzMyN2Y1MTdlOWY4MTE5ODJkMjUwZjA3MDI5ODZlNGI1NzY0YWQ5NTg5IiwiZm9sbG93aW5nQ29udGV4dExpbmVDb3VudCI6MywiZm9sbG93aW5nQ29udGV4dEhhc2giOiI1NDhkNzQ4M2QwNjBmMTcyMmUyNDUzNjg4ODMzNDI1NmI1NDkwZThiYmU4Njk4MjA2NzZjYTllYWYzNTA5Y2M5In0"
+        },
+        {
+          "resource": "repo://scripts/test_code_samples.py#L18-L18",
+          "version": "repo-lines-v1:sha256:bdd6281b8a2dab4be9e76d6e146c1e585fbf3ac9eecc48ad797a3213707d40f4:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiYmRkNjI4MWI4YTJkYWI0YmU5ZTc2ZDZlMTQ2YzFlNTg1ZmJmM2FjOWVlY2M0OGFkNzk3YTMyMTM3MDdkNDBmNCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiYmRkNjI4MWI4YTJkYWI0YmU5ZTc2ZDZlMTQ2YzFlNTg1ZmJmM2FjOWVlY2M0OGFkNzk3YTMyMTM3MDdkNDBmNCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMjFlOWZlNmIzNGFiMDZlZDkyOTkwYmIyN2Y3NzYwOWNkMWJiMmJiNWMyOTJkZmYxZjY1MmZiZGY3ZDdjMzhmZSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZjhiYmFiNGJiYzlmOWY5YzkyYjA4YjNjZTI1OWZlMmJiMjU1NjhjMzY5MTc4ZTIwNTVhZGFjOGIxMWYzMjhlZSJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_cabdd0f642f54b84b6f3198b6425ef25",
+      "statement": "The code-sample workflow skips fork pull requests to protect provider secrets, provisions a PostgreSQL pgvector service and language toolchains, and supplies provider credentials plus POSTGRES_URI to the sample runner.",
+      "evidence": [
+        {
+          "resource": "repo://.github/workflows/test-code-samples.yml#L21-L41",
+          "version": "repo-lines-v1:sha256:aa132239307666a0cc1e7d3af3ca25737ce6b0932e8653b802e58653dc034598:eyJzZWxlY3RlZExpbmVDb3VudCI6MjEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImU5ZDgwMTU0ZWQ0MmZjNWM3NzliMTMzMTU3OGI1OGI4OWM4MDFlYWNlNzRmMjRjZDQ4ZWI0YTIzNTc5NDBhOTUiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjJhMGYxNjBhNWVkMGNkOTQyMmMzNTAzMGFmNzZmYjExMmNlMWJjYjU1YmQ5NWM4Mzk4MmQ2MTJjNWU2YzYyNTUiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjIxNjdkNDFiY2IyOTQ1MmE0ZGUwODI5NTZhNjYyZGQ1ZDMyZWVjNzYwODRmZDAwZjE3MjE0MDg5ZDk1YTUzNDQiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjY1NWQ0NTIyNDExYTE0N2E4YjUwZmU3MjA5OWY0OWQ5NjU2Y2QzN2NmM2U2MTE0ZDljMmYwZDQ3NjAyOTc5MzQifQ"
+        },
+        {
+          "resource": "repo://.github/workflows/test-code-samples.yml#L80-L144",
+          "version": "repo-lines-v1:sha256:ae76f2a11f10a785e8cad97a0af0f80bc94841c06427e280b735d0e64c633077:eyJzZWxlY3RlZExpbmVDb3VudCI6NjUsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijc4MDE3ZmY4MGU3MWJjMTZlMjY0NjI3YTMwNTc5OWJmYjA5ZTUxMDc2YmU3YjY2OGYwYTBmMjg3NTc0MGNmN2EiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjU2NzZiN2ViMjA3MDU4NTc0OGU2ZDUwMzQ5NDIzZTgwZjBkMWRlMzAyMDBhZTY5MWNmY2Q3NTM2MWVkZGQ0YzkiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjVkYWFlYjdkMjA5ZjI0YzJjMTVjMTcyZjhmMWE2NTE4NTRlM2NiNWFkYmYyODQ1MzFmZGZjM2RjOWQ3MGJmMTIiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImIwYTIxM2ZiMzQ5YmZkZDcyNGUyNmIyNGFlODgxMzVjNTMxNTM2ZWVlNDdmMmQ5YWQ5YTk3MGU0ZjhmNjU5NTYifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_7b9eeb8ad0b3491eb8fe2add9460b24d",
+      "statement": "Scheduled and manually dispatched code-sample workflows run all samples, whereas pull requests test only changed eligible sample files; the job allows 90 minutes for full runs and 60 minutes for pull-request runs.",
+      "evidence": [
+        {
+          "resource": "repo://.github/workflows/test-code-samples.yml#L145-L157",
+          "version": "repo-lines-v1:sha256:0ecb4720985dfe8b369cde19b5b7c000434cfe71f8501f97fa7fa595fb0ed88b:eyJzZWxlY3RlZExpbmVDb3VudCI6MTMsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjVjZThiODJlMzgwNWEzYTE4MDAzZjJmZTQ1ZDRmNWRiYjQ3YWZkZThjMmRkZjU1OWNlZDJiNGZkYzRmNDA2MzkiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImJmNTU5NzljZTczMDIwMzNlNmIyZmQ3ZDg4ZjUzN2EzYjhlMDkxZWEzMDVjODExZmZhMTI3NGJmNTc2NGVhNWUiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImU1MjBlYzE5YWNhMzBmYzBkOWMyNjYzZjc1MDFhMTVlMTg2OWEyZGI1NmE1ZWY5ZWYyMjBkNjFmNjY1MWY0ZGYiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjowLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUifQ"
+        },
+        {
+          "resource": "repo://.github/workflows/test-code-samples.yml#L48-L78",
+          "version": "repo-lines-v1:sha256:93761420003f926ef7c09ca0042be8a53cd4676c67735f82de2de012aee26c73:eyJzZWxlY3RlZExpbmVDb3VudCI6MzEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImFjNTFlYzVhMGQ3ZmM3ZmJkOThiZWUxMzRjOTczZjQzZDRmZGM3MWIyMTU2MDFiNDkzNDhjNmQ1Mjg1OTg0NWEiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImJmNTU5NzljZTczMDIwMzNlNmIyZmQ3ZDg4ZjUzN2EzYjhlMDkxZWEzMDVjODExZmZhMTI3NGJmNTc2NGVhNWUiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjM2MGFkNjRhNzc2N2YyNmFjNDRhMjcxNzgwN2E4NjAzYzQ5ZmQxZTAwMDE1MWZhYzgzYjk1OWE4MDBlYjAzNzEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImI2NTk5MzFmMTg2OTAwYzI3YWQ0Njg0M2VkYmJhNTU4YTMyZjcyNTNlMzQ3MTZiNDEyMDhhZDEwZTNhNzdmNzEifQ"
+        },
+        {
+          "resource": "repo://.github/workflows/test-code-samples.yml#L7-L28",
+          "version": "repo-lines-v1:sha256:44d5d0ad5e9da06b8b747eca98b05c430f24d51b6273c8f9f9ee049160f78aa4:eyJzZWxlY3RlZExpbmVDb3VudCI6MjIsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImU5NmRjNDgxNDlmNWE4M2QxZWQ2ZGJiMzliYmM3ZTJiOTAyYWEzZDM0ZDZiZDVhZTRiMjkxYjY4ZGYwY2E3OWEiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImY2ZTk4Mjg3MzgzYWQyYzg1NDFjYmYzOTA1NGViZmVhZDZkZTY5Njg0ZjE1OGI4MzcyN2JkYTg2MjlkYTExNjUiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjZmMWQ3MGQ3MmJhZDIzMWQ0M2M1NzVhY2VmNjk0NjU4MGU0MzljODc5Nzk0ZWQyZWExZjRhNDAzNDAyNDUxNzIiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6Ijg1MzNmMDVhZDdlZWI0ODNlZGE4MWNiYWVkNWNiNzdmNGU4MjM1MGZmMWJlNGNjNGNiZDE5NTIyMTU2OTcwZjkifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_cd87cff15b464cd988f16a9dd1357562",
+      "statement": "A sample that remains LangSmith-rate-limited after three attempts separated by 15-second delays is recorded as skipped and does not fail the runner; other unsuccessful samples cause a nonzero exit.",
+      "evidence": [
+        {
+          "resource": "repo://scripts/test_code_samples.py#L18-L35",
+          "version": "repo-lines-v1:sha256:11d08614d3279bbade5db8ea365bb32e1b8d3e4e9c277f4277ceb41f84ea4b8a:eyJzZWxlY3RlZExpbmVDb3VudCI6MTgsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImJkZDYyODFiOGEyZGFiNGJlOWU3NmQ2ZTE0NmMxZTU4NWZiZjNhYzllZWNjNDhhZDc5N2EzMjEzNzA3ZDQwZjQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjMwYzFmMTg4ZjE0MmVkN2E4MjQ2ODBiMjA3MTcyYzU1MTliYzYxNGE0OGZkYTdjZjE2N2VkYjhkZGY3OTk1NmMiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjIxZTlmZTZiMzRhYjA2ZWQ5Mjk5MGJiMjdmNzc2MDljZDFiYjJiYjVjMjkyZGZmMWY2NTJmYmRmN2Q3YzM4ZmUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImM4MzAxY2JkNzE2NjZmNDU5NzA2Y2IwZWI0ZTliZDE4OWYxMzVlZjJkOTY0YTk2MmUzYzA1NGYxYmQyMjhkNDQifQ"
+        },
+        {
+          "resource": "repo://scripts/test_code_samples.py#L293-L342",
+          "version": "repo-lines-v1:sha256:3a8819a6690619d849107ec5bba4dc0af38e324f49805d0424a69205252f61fd:eyJzZWxlY3RlZExpbmVDb3VudCI6NTAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImI3YWM5MGM2YTdjNTVlMGI0ZTQ1ZThmY2Q0YzBhMWVmYzU2YzI0ZjdkMTdiYWEyOGYzYzYwZTJkZDdiYWY3YjAiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjE2MjMzYjNmZmVhMzJhMjNkZjUzMDY1MzQzNDhmMmRlZTc3NmE1YTZmNzRmYjUzMzE3NWRkYzUzOWE4ZmU0NjQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjFmYzlhM2QyN2I5OTk3YjQyMDdjNzExN2E2OTQyZGFjZWVhYmY1MTg3MjgxOGYyNzkzZTQ3MGFlZjVkMGJlYTciLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjNkNDEzNDBjYzIzOWExNTljZTliNjAyMmU5ZjYzMjI4MzJlMmVhZDc2Y2FlOWU0NzU0ZDIxMGViOGZiNmQ1ZTgifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_0cd04197182a4448a29e1442ff5f2204",
+      "statement": "The MCP example executable sections validate MCP tool discovery without invoking a live model: one runs a FastMCP HTTP server in process and checks for ping, and the quickstart adapts an in-memory weather server and invokes get_forecast.",
+      "evidence": [
+        {
+          "resource": "repo://src/code-samples/deepagents/deepagents-mcp-tools.py#L29-L65",
+          "version": "repo-lines-v1:sha256:016fa75105de298256720ba6ec671a434d42256e7ca48538a5b9f2590594d5d8:eyJzZWxlY3RlZExpbmVDb3VudCI6MzcsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImIxOGY5YTYxMWUzYWRjM2JhODhkMGQ2MjJjMTY2MzViYjkyYjg1ZjcyYWI2NmI2MzU2NTFjMTgwNGVmZjI1OTgiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjgzNTNmY2Q4MWJkMjUzNmJlMGRkMzQ4ZDFjYjU5OGU3NDA2ZTI5YTk4MTZmZDc5ZWY0ZjY2NTM1NTI5M2RjZGEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6Ijc4M2I3ZDlhZjZhNTc3ZWQzZTI4NjdkZWQ2ZmNjYmU1YmQ2YjYxMWJmZDA0Zjk4ZGUyNDA2MjFkYzY3Yjc1MjciLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjoxLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6Ijk2MjBhYTZjOGI5MmRmYTcxODEwNTRkN2ZlOTllYzA4OWFmMmExYjdkYmI5YmEzODViMWNkOGM0NzI4NWQ0ZWMifQ"
+        },
+        {
+          "resource": "repo://src/code-samples/langchain/mcp-quickstart.py#L16-L48",
+          "version": "repo-lines-v1:sha256:ab11117d3aa626816f63f7602ca2202b2f6c83be0ead21a7c4f2efff60dbe38f:eyJzZWxlY3RlZExpbmVDb3VudCI6MzMsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImIxOGY5YTYxMWUzYWRjM2JhODhkMGQ2MjJjMTY2MzViYjkyYjg1ZjcyYWI2NmI2MzU2NTFjMTgwNGVmZjI1OTgiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjgzNTNmY2Q4MWJkMjUzNmJlMGRkMzQ4ZDFjYjU5OGU3NDA2ZTI5YTk4MTZmZDc5ZWY0ZjY2NTM1NTI5M2RjZGEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6Ijc4M2I3ZDlhZjZhNTc3ZWQzZTI4NjdkZWQ2ZmNjYmU1YmQ2YjYxMWJmZDA0Zjk4ZGUyNDA2MjFkYzY3Yjc1MjciLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjoxLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6Ijk2MjBhYTZjOGI5MmRmYTcxODEwNTRkN2ZlOTllYzA4OWFmMmExYjdkYmI5YmEzODViMWNkOGM0NzI4NWQ0ZWMifQ"
+        }
+      ]
+    }
+  ],
+  "verification": {
+    "by": "openwiki/0.4.3",
+    "at": "2026-09-07T08:24:09.165Z"
+  }
+}
